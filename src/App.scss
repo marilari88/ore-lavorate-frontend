@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css?family=Fira+Sans");
+
+$colore-principale: #89c5cc;
+$colore-secondario: #69a1ac;
+$colore-successo: #a2e88b;
+
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+html {
+  background-color: $colore-principale;
+  font-size: 18px;
+  font-family: "Fira Sans";
+  .App {
+    display: flex;
+    flex-flow: column;
+    height: 100vh;
+    .topBar {
+      top: 0px;
+      display: flex;
+      flex-flow: row nowrap;
+      height: 60px;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 10px 15px;
+      box-sizing: content-box;
+
+      .infoContratto {
+        color: white;
+        border-radius: 20px;
+        background-color: $colore-secondario;
+        padding: 8px 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        svg {
+          width: 20px;
+          justify-self: self-end;
+        }
+      }
+      .infoLogin {
+        width: 200px;
+        display: flex;
+        align-items: center;
+        color: white;
+        justify-content: flex-end;
+        .nomeOperatore {
+          padding: 10px;
+          text-align: right;
+        }
+      }
+    }
+
+    .main {
+      position: relative;
+      flex: 1;
+      background: url("./asset/sfondo.svg") no-repeat;
+      background-size: cover;
+      display: flex;
+      justify-items: center;
+      align-items: center;
+      .riepilogoContratto {
+        width: 100%;
+        flex: 1;
+        display: flex;
+        justify-items: center;
+        align-items: center;
+        flex-flow: column;
+        .titoloContratto {
+          font-weight: bold;
+          font-size: 36px;
+          color: $colore-secondario;
+        }
+        .riepilogoOre {
+          width: 100%;
+          margin: 24px 0;
+          display: flex;
+          flex-flow: column;
+          align-items: center;
+          .etichettaTotale {
+            font-size: 18px;
+            color: $colore-principale;
+          }
+          .totaleOre {
+            line-height: 36px;
+            font-size: 24px;
+            color: $colore-secondario;
+            font-weight: bold;
+          }
+        }
+        .resocontoOre {
+          font-size: 18px;
+          color: $colore-successo;
+        }
+      }
+    }
+  }
+}

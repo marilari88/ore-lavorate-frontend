@@ -1,0 +1,21 @@
+    <svg
+      viewBox="0 0 375 726"
+      preserveAspectRatio="xMinYMin slice"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle cx="188" cy="396" r="386" fill="white" />
+      <circle cx="188.316" cy="404.316" r="27.3164" fill="#FFEBD3" />
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M58.6465 0L91.293 32.6465L58.6465 65.293L26 32.6465L58.6465 0Z"
+        fill="#FFEBD3"
+      />
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M343.99 87L359.98 102.99L343.99 118.98L328 102.99L343.99 87Z"
+        fill="#FFEBD3"
+      />
+    </svg>
