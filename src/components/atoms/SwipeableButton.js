@@ -23,15 +23,25 @@ export default class SwipeableButton extends Component {
     if (this.unmounted || this.state.unlocked) return;
     if (this.isDragging) {
       if (isTouchDevice) {
-        this.sliderLeft = Math.min(
-          Math.max(0, e.touches[0].clientX - this.startX),
-          this.containerWidth
-        );
+        this.sliderLeft = !this.props.right
+          ? Math.min(
+              Math.max(0, e.touches[0].clientX - this.startX),
+              this.containerWidth
+            )
+          : Math.min(
+              Math.max(
+                -this.containerWidth,
+                e.touches[0].clientX - this.startX
+              ),
+              0
+            );
       } else {
-        this.sliderLeft = Math.min(
-          Math.max(0, e.clientX - this.startX),
-          this.containerWidth
-        );
+        this.sliderLeft = !this.props.right
+          ? Math.min(Math.max(0, e.clientX - this.startX), this.containerWidth)
+          : Math.min(
+              Math.max(-this.containerWidth, e.clientX - this.startX),
+              0
+            );
       }
       this.updateSliderStyle();
     }
@@ -39,14 +49,19 @@ export default class SwipeableButton extends Component {
 
   updateSliderStyle = () => {
     if (this.unmounted || this.state.unlocked) return;
-    slider.current.style.left = this.sliderLeft + 50 + "px";
+    slider.current.style.left = this.props.right
+      ? this.sliderLeft - 50 + "px"
+      : this.sliderLeft + 50 + "px";
   };
 
   stopDrag = () => {
     if (this.unmounted || this.state.unlocked) return;
     if (this.isDragging) {
       this.isDragging = false;
-      if (this.sliderLeft > this.containerWidth * 0.9) {
+      if (
+        this.sliderLeft > this.containerWidth * 0.9 ||
+        this.sliderLeft < -this.containerWidth * 0.9
+      ) {
         this.sliderLeft = this.containerWidth;
         if (this.props.onSuccess) {
           this.props.onSuccess();
@@ -108,7 +123,7 @@ export default class SwipeableButton extends Component {
           ref={container}
         >
           <div
-            className="rsbcSlider"
+            className={this.props.right ? "rsbcSliderRight" : "rsbcSlider"}
             ref={slider}
             onMouseDown={this.startDrag}
             style={{ background: this.props.color }}
