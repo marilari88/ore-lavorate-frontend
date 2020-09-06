@@ -1,18 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SwipeableButton from "../atoms/SwipeableButton";
-
+import TimbraturaService from "../../services/TimbraturaService";
+import { stringaTempo } from "../../utils/differenzaorario";
 function SituazioneTimbratura() {
-  const [statoTimbratura, setStatoTimbratura] = useState("");
+  const [timbratura, setTimbratura] = useState("");
+
+  useEffect(() => {
+    TimbraturaService.getLast()
+      .then((response) => {
+        setTimbratura(response.data.elenco[0]);
+      })
+      .then(() => console.log(timbratura));
+  }, []);
+
   return (
     <div className="situazioneTimbratura">
       <div className="etichettaSituazione">Stai lavorando da:</div>
-      <div className="tempoLavoroInCorso">7 ore, 15 minuti e 16 secondi</div>
-      {!statoTimbratura ? (
+      <div className="tempoLavoroInCorso">
+        {stringaTempo(timbratura.differenza)}
+      </div>
+      {!timbratura ? (
         <SwipeableButton
           color="#52CD5E"
           text="INIZIA A LAVORARE"
           text_unlocked="BUON LAVORO!"
-          onSuccess={() => setStatoTimbratura("ingresso")}
+          onSuccess={() => console.log("ingresso")}
         />
       ) : (
         <SwipeableButton
