@@ -1,4 +1,5 @@
 import React from "react";
+import PulsanteElencoTimbrature from "../atoms/PulsanteElencoTimbrature";
 
 function RiepilogoContratto() {
   return (
@@ -9,6 +10,7 @@ function RiepilogoContratto() {
         <div className="totaleOre">24 Ore, 17 Minuti</div>
       </div>
       <div className="resocontoOre">Devi recuperare 45 Ore</div>
+      <PulsanteElencoTimbrature />
     </div>
   );
 }
