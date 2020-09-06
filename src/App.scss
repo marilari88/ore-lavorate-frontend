@@ -10,6 +10,17 @@ $colore-sfondo-riquadro: #f4f2f2;
   padding: 0px;
 }
 
+a {
+  text-decoration: none;
+}
+
+.pulsante {
+  font-size: 18px;
+  padding: 15px;
+  border-radius: 40px;
+  color: white;
+}
+
 html {
   background-color: $colore-principale;
   font-size: 18px;

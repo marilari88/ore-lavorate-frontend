@@ -9,16 +9,16 @@ class TimbraturaDataService {
     return http.get(`/timbratura/${id}`);
   }
 
-  create(data){
-      return http.post("/timbratura",data);
+  create(data) {
+    return http.post("/timbratura", data);
   }
 
-  update (id,data){
-      return http.put(`/timbratura/${id}`,data);
+  update(id, data) {
+    return http.put(`/timbratura/${id}`, data);
   }
 
-  delete (id){
-      return http.delete(`/timbratura/${id}`);
+  delete(id) {
+    return http.delete(`/timbratura/${id}`);
   }
 }
 

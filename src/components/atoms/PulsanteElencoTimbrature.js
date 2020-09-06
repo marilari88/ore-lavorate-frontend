@@ -1,19 +1,17 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function PulsanteElencoTimbrature() {
   return (
-    <div
-      className="pulsanteElencoTimbrature"
-      style={{
-        color: "white",
-        backgroundColor: "#89c5cc",
-        fontSize: 18,
-        padding: 15,
-        borderRadius: 40,
-        marginTop: 36,
-      }}
-    >
-      Elenco Timbrature
-    </div>
+    <Link to="/elencotimbrature" style={{ marginTop: 36 }}>
+      <div
+        className="pulsanteElencoTimbrature pulsante"
+        style={{
+          backgroundColor: "#89c5cc",
+        }}
+      >
+        Elenco Timbrature
+      </div>
+    </Link>
   );
 }

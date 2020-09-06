@@ -4,10 +4,10 @@ import SituazioneTimbratura from "../moleculas/SituazioneTimbratura";
 
 function Main() {
   return (
-    <div className="main">
+    <main className="main">
       <RiepilogoContratto />
       <SituazioneTimbratura />
-    </div>
+    </main>
   );
 }
 
