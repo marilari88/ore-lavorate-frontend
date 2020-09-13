@@ -22,6 +22,7 @@ function SituazioneTimbratura() {
   }, []);
 
   useEffect(() => {
+    aggiornamentoLabel();
     if (statoTimbratura === 2 || statoTimbratura === 3) {
       const intervallo = setInterval(() => {
         setTempoLavoro(
@@ -30,7 +31,6 @@ function SituazioneTimbratura() {
       }, 1000);
       return () => clearInterval(intervallo);
     }
-    aggiornamentoLabel();
   }, [statoTimbratura]);
 
   const recuperoUltimaTimbratura = () => {
@@ -52,7 +52,10 @@ function SituazioneTimbratura() {
   };
 
   const aggiornamentoLabel = () => {
-    if (statoTimbratura === 1) {
+    console.log("Aggiorno la descrizione");
+    if (statoTimbratura === 0) {
+      setLabelDescrizione("Caricamento timbratura in corso... ");
+    } else if (statoTimbratura === 1) {
       setLabelDescrizione("Inizia a lavorare ");
     } else if (statoTimbratura === 2 || statoTimbratura === 3) {
       setLabelDescrizione("Stai lavorando da ");
@@ -95,46 +98,38 @@ function SituazioneTimbratura() {
 
   return (
     <div className="situazioneTimbratura">
-      {!statoTimbratura === 0 ? (
-        <div className="caricamentoInCorso">
-          Caricamento stato delle tue timbrature...
-        </div>
-      ) : (
-        <>
-          <div className="etichettaSituazione">{labelDescrizione}</div>
-          <div className="tempoLavoroInCorso">{stringaTempo(tempoLavoro)}</div>
-          {(statoTimbratura === 3 || statoTimbratura === 4) && (
-            <SwipeableButton
-              key="pulsanteUscita"
-              color="#F26D6D"
-              text="TERMINA IL TUO LAVORO"
-              text_unlocked="BUON RIPOSO!"
-              onSuccess={() => inserisciUscita()}
-              right
-            />
-          )}
-          {(statoTimbratura === 1 || statoTimbratura === 2) && (
-            <SwipeableButton
-              key="pulsanteIngresso"
-              color="#52CD5E"
-              text="INIZIA A LAVORARE"
-              text_unlocked="BUON LAVORO!"
-              onSuccess={() => inserisciIngresso()}
-            />
-          )}
-          {statoTimbratura === 5 && (
-            <button
-              className="pulsante"
-              onClick={() => {
-                setStatoTimbratura(1);
-                setTempoLavoro(0);
-                setTimbratura({ ingresso: "", uscita: "", differenza: 0 });
-              }}
-            >
-              Inizia nuovo Turno
-            </button>
-          )}
-        </>
+      <div className="etichettaSituazione">{labelDescrizione}</div>
+      <div className="tempoLavoroInCorso">{stringaTempo(tempoLavoro)}</div>
+      {(statoTimbratura === 3 || statoTimbratura === 4) && (
+        <SwipeableButton
+          key="pulsanteUscita"
+          color="#F26D6D"
+          text="TERMINA IL TUO LAVORO"
+          text_unlocked="BUON RIPOSO!"
+          onSuccess={() => inserisciUscita()}
+          right
+        />
+      )}
+      {(statoTimbratura === 1 || statoTimbratura === 2) && (
+        <SwipeableButton
+          key="pulsanteIngresso"
+          color="#52CD5E"
+          text="INIZIA A LAVORARE"
+          text_unlocked="BUON LAVORO!"
+          onSuccess={() => inserisciIngresso()}
+        />
+      )}
+      {statoTimbratura === 5 && (
+        <button
+          className="pulsante"
+          onClick={() => {
+            setStatoTimbratura(1);
+            setTempoLavoro(0);
+            setTimbratura({ ingresso: "", uscita: "", differenza: 0 });
+          }}
+        >
+          Inizia nuovo Turno
+        </button>
       )}
     </div>
   );
