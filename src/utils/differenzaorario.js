@@ -1,5 +1,4 @@
 export const calcoloSecondi = (date1, date2) => {
-  //console.log(date1, date2);
   const diffTime = Math.abs(date2 - date1);
   const differenzaSecondi = Math.round(diffTime / 1000);
   return differenzaSecondi;

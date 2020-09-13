@@ -19,6 +19,12 @@ a {
   padding: 15px;
   border-radius: 40px;
   color: white;
+  background-color: $colore-secondario;
+  border: none;
+  &:hover {
+    cursor: pointer;
+    background-color: lighten($colore-principale, 5%);
+  }
 }
 
 html {

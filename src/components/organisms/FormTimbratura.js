@@ -68,8 +68,6 @@ class FormTimbratura extends React.Component {
     );
   };
 
-  
-
   mostraUscitaDaInserire = () => {
     return (
       <>

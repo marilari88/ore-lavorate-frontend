@@ -2,19 +2,19 @@ import http from "../http-common";
 
 class TimbraturaDataService {
   getLast() {
-    return http.get("/timbrature/?limit=1&order=desc");
+    return http.get("/timbrature/?limit=1&order=-1");
   }
 
-  getAll() {
-    return http.get("/timbrature");
+  async getAll() {
+    return await http.get("/timbrature");
   }
 
   get(id) {
     return http.get(`/timbrature/${id}`);
   }
 
-  create(data) {
-    return http.post("/timbrature", data);
+  async create(data) {
+    return await http.post("/timbrature", data);
   }
 
   update(id, data) {

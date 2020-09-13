@@ -3,10 +3,6 @@ import { stringaTempo } from "../../utils/differenzaorario";
 import PropTypes from "prop-types";
 
 class RigaTimbratura extends React.Component {
-/*   constructor(props) {
-    super(props);
-  }
- */
   render() {
     return (
       <div>
@@ -26,7 +22,7 @@ class RigaTimbratura extends React.Component {
           </>
         )}
 
-     {/*    <Link
+        {/*    <Link
           href="/timbratura/[idtimbratura]"
           as={`/timbratura/${this.props.timbratura.id}`}
         >
