@@ -6,9 +6,10 @@ function SituazioneTimbratura() {
   const [timbratura, setTimbratura] = useState({});
   const [labelDescrizione, setLabelDescrizione] = useState("");
   const [tempoLavoro, setTempoLavoro] = useState(0);
-  const [statoTimbratura, setStatoTimbratura] = useState(1);
+  const [statoTimbratura, setStatoTimbratura] = useState(0);
 
   /* 
+  stato 0 = caricamento ultima timbratura
   stato 1 = nuova timbratura
   stato 2 = turno di lavoro appena iniziato
   stato 3 = turno di lavoro in corso
@@ -94,7 +95,7 @@ function SituazioneTimbratura() {
 
   return (
     <div className="situazioneTimbratura">
-      {!timbratura ? (
+      {!statoTimbratura === 0 ? (
         <div className="caricamentoInCorso">
           Caricamento stato delle tue timbrature...
         </div>

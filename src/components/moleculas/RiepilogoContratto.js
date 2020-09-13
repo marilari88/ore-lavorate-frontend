@@ -17,7 +17,6 @@ function RiepilogoContratto() {
       },
       0
     );
-    console.log(sommaTimbrature);
     setSommaTempo(sommaTimbrature);
   };
 
