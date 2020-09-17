@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import SwipeableButton from "../atoms/SwipeableButton";
 import TimbraturaService from "../../services/TimbraturaService";
 import { calcoloSecondi, stringaTempo } from "../../utils/differenzaorario";
-function SituazioneTimbratura() {
+function SituazioneTimbratura({ setTotaleOreContratto }) {
   const [timbratura, setTimbratura] = useState({});
   const [labelDescrizione, setLabelDescrizione] = useState("");
   const [tempoLavoro, setTempoLavoro] = useState(0);
@@ -52,7 +52,6 @@ function SituazioneTimbratura() {
   };
 
   const aggiornamentoLabel = () => {
-    console.log("Aggiorno la descrizione");
     if (statoTimbratura === 0) {
       setLabelDescrizione("Caricamento timbratura in corso... ");
     } else if (statoTimbratura === 1) {
@@ -94,6 +93,7 @@ function SituazioneTimbratura() {
       setStatoTimbratura(5);
       setTimbratura(timbraturaAggiornata);
     }, 2000);
+    setTotaleOreContratto();
   };
 
   return (
