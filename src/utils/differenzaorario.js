@@ -10,7 +10,7 @@ export const stringaTempo = (tempoInSecondi) => {
   const secondi = Math.abs(tempoInSecondi - minuti * 60 - ore * 60 * 60);
 
   let stringaTempo = `
-  ${ore === 0 ? "" : ore === 1 ? "ora" : ore + " ore"} 
+  ${ore === 0 ? "" : ore === 1 ? "1 ora" : ore + " ore"} 
   ${minuti} ${minuti === 1 ? "minuto" : "minuti"} 
   e ${secondi} ${secondi === 1 ? "secondo" : "secondi"}`;
   return stringaTempo;

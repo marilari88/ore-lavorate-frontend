@@ -22,16 +22,25 @@ function SituazioneTimbratura({ setTotaleOreContratto }) {
   }, []);
 
   useEffect(() => {
-    aggiornamentoLabel();
+    if (statoTimbratura === 0) {
+      setLabelDescrizione("Caricamento timbratura in corso... ");
+    } else if (statoTimbratura === 1) {
+      setLabelDescrizione("Inizia a lavorare ");
+    } else if (statoTimbratura === 2 || statoTimbratura === 3) {
+      setLabelDescrizione("Stai lavorando da ");
+    } else {
+      setLabelDescrizione("Hai lavorato per ");
+    }
+
     if (statoTimbratura === 2 || statoTimbratura === 3) {
-      const intervallo = setInterval(() => {
-        setTempoLavoro(
-          calcoloSecondi(new Date(), new Date(timbratura.ingresso))
-        );
+      const tempoIngresso = new Date(timbratura.ingresso);
+      setTempoLavoro(calcoloSecondi(new Date(), tempoIngresso));
+      let intervallo = setInterval(() => {
+        setTempoLavoro(calcoloSecondi(new Date(), tempoIngresso));
       }, 1000);
       return () => clearInterval(intervallo);
     }
-  }, [statoTimbratura]);
+  }, [statoTimbratura, timbratura.ingresso]);
 
   const recuperoUltimaTimbratura = () => {
     TimbraturaService.getLast()
@@ -51,18 +60,6 @@ function SituazioneTimbratura({ setTotaleOreContratto }) {
       );
   };
 
-  const aggiornamentoLabel = () => {
-    if (statoTimbratura === 0) {
-      setLabelDescrizione("Caricamento timbratura in corso... ");
-    } else if (statoTimbratura === 1) {
-      setLabelDescrizione("Inizia a lavorare ");
-    } else if (statoTimbratura === 2 || statoTimbratura === 3) {
-      setLabelDescrizione("Stai lavorando da ");
-    } else {
-      setLabelDescrizione("Hai lavorato per ");
-    }
-  };
-
   const inserisciIngresso = async () => {
     const timbraturaIngresso = new Date();
     const timbraturaCreata = await TimbraturaService.create({
@@ -73,7 +70,7 @@ function SituazioneTimbratura({ setTotaleOreContratto }) {
       ingresso: timbraturaIngresso,
     });
     setStatoTimbratura(2);
-    setTimeout(() => setStatoTimbratura(3), 10000);
+    setTimeout(() => setStatoTimbratura(3), 5000);
   };
 
   const inserisciUscita = async () => {
