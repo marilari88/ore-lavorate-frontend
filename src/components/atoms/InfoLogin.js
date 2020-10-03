@@ -1,13 +1,11 @@
 import React from "react";
 import { Avatar } from "@material-ui/core";
 
-function InfoLogin() {
-  //  const nomeOperatore = "Lucia Onofri";
-
+function InfoLogin({ userData }) {
   return (
     <div className="infoLogin">
-      <div className="nomeOperatore">Lucia Onofri</div>
-      <Avatar alt="{nomeOperatore}"></Avatar>
+      <div className="nomeOperatore">{userData && userData.name}</div>
+      <Avatar alt="{{userData && user.name}}"></Avatar>
     </div>
   );
 }

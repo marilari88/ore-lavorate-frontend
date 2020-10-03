@@ -40,12 +40,12 @@ function SituazioneTimbratura({ setTotaleOreContratto }) {
       }, 1000);
       return () => clearInterval(intervallo);
     }
-  }, [statoTimbratura, timbratura.ingresso]);
+  }, [statoTimbratura, timbratura]);
 
   const recuperoUltimaTimbratura = () => {
     TimbraturaService.getLast()
       .then((response) => {
-        if (response.data) {
+        if (response.data & (response.data.length > 0)) {
           setTimbratura(response.data[0]);
           setStatoTimbratura(response.data[0].uscita ? 1 : 3);
         } else {
@@ -53,11 +53,11 @@ function SituazioneTimbratura({ setTotaleOreContratto }) {
           setStatoTimbratura(1);
         }
       })
-      .catch((err) =>
-        console.log(
-          "Errore nel recuperare l'ultima timbratura effettuata: " + err
-        )
-      );
+      .catch((err) => {
+        setLabelDescrizione("Impossibile recuperare l'ultima timbratura");
+        console.log("Errore nel recuperare l'ultima timbratura ");
+        console.error(err);
+      });
   };
 
   const inserisciIngresso = async () => {
