@@ -15,7 +15,6 @@ function Main() {
       const elencoTimbrature = await TimbraturaService.getAll();
       let sommaTimbrature = await Array.from(elencoTimbrature.data).reduce(
         (totale, numero) => {
-          console.log(totale);
           return totale + parseInt(numero["differenza"] || 0);
         },
         0

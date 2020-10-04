@@ -1,9 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Link, Redirect } from "react-router-dom";
 import AuthService from "../../services/AuthService";
-function Login() {
+function Login(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [referer, setReferer] = useState("/");
+
+  useEffect(() => {
+    props.location.state !== undefined &&
+      setReferer(props.location.state.referer);
+  }, [props]);
 
   const submit = async (e) => {
     e.preventDefault();
@@ -14,22 +22,10 @@ function Login() {
       });
       setMessage(response.data.message);
       localStorage.setItem("auth-token", response.data.token);
+      setLoggedIn(true);
     } catch (err) {
       if (err.response) setMessage(err.response.data.error);
     }
-    /* 
-    AuthService.loginUser({
-      email,
-      password,
-    })
-      .then((response) => {
-        setMessage(response.data.message);
-        console.log(response.headers.Authorization);
-      })
-      .catch((error) => {
-        console.log(error.response.data);
-        if (error.response) setMessage(error.response.data.error);
-      }); */
   };
 
   return (
@@ -50,6 +46,8 @@ function Login() {
         <input type="submit" value="Accedi" />
       </form>
       <div className="messaggio">{message}</div>
+      <Link to="/register">Non sei registrato?</Link>
+      {loggedIn && <Redirect to={referer} />}
     </div>
   );
 }

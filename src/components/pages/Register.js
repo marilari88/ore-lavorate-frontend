@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import AuthService from "../../services/AuthService";
 
 function Register() {
@@ -61,6 +62,7 @@ function Register() {
         <input type="submit" value="Conferma" />
       </form>
       <div className="messaggio">{message}</div>
+      <Link to="/login">Già registrato?</Link>
     </div>
   );
 }

@@ -1,14 +1,10 @@
-import React, { useContext, useEffect } from "react";
+import React from "react";
 import InfoLogin from "../atoms/InfoLogin";
 import InfoContratto from "../atoms/InfoContratto";
-import UserContext from "../../context/UserContext";
+import { useAuth } from "../../context/UserContext";
 
 function Header() {
-  const { userData } = useContext(UserContext);
-
-  useEffect(() => {
-    if (userData) console.log(userData);
-  }, [userData]);
+  const { userData } = useAuth();
 
   return (
     <header>
