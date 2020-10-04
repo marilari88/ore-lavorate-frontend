@@ -5,7 +5,7 @@ let headers = {
   "Access-Control-Allow-Origin": "*",
 };
 
-const token = localStorage.getItem("token");
+const token = localStorage.getItem("auth-token");
 if (token) headers.Authorization = `Bearer ${token}`;
 
 export default axios.create({

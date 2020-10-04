@@ -17,9 +17,20 @@ function App() {
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {
-    AuthService.checkToken().then((response) => {
-      setUserData({ id: response.data.user.id, name: response.data.user.name });
-    });
+    const authToken = async () => {
+      AuthService.checkToken()
+        .then((response) => {
+          if (response)
+            setUserData({
+              id: response.data.user.id,
+              name: response.data.user.name,
+            });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    authToken();
   }, []);
 
   return (
@@ -27,8 +38,12 @@ function App() {
       <UserContext.Provider value={{ userData, setUserData }}>
         <Header />
         <Switch>
-          <Route exact path="/" component={Main} />
-          <Route path="/elencotimbrature" component={ElencoTimbrature} />
+          <Route exact path="/">
+            <Main />
+          </Route>
+          <Route path="/elencotimbrature">
+            <ElencoTimbrature />
+          </Route>
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
         </Switch>

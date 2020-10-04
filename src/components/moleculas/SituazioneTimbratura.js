@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import SwipeableButton from "../atoms/SwipeableButton";
+import React, { useEffect, useState } from "react";
 import TimbraturaService from "../../services/TimbraturaService";
 import { calcoloSecondi, stringaTempo } from "../../utils/differenzaorario";
-function SituazioneTimbratura({ setTotaleOreContratto }) {
+import SwipeableButton from "../atoms/SwipeableButton";
+function SituazioneTimbratura({ recuperaTotaleContratto }) {
   const [timbratura, setTimbratura] = useState({});
   const [labelDescrizione, setLabelDescrizione] = useState("");
   const [tempoLavoro, setTempoLavoro] = useState(0);
@@ -45,7 +45,7 @@ function SituazioneTimbratura({ setTotaleOreContratto }) {
   const recuperoUltimaTimbratura = () => {
     TimbraturaService.getLast()
       .then((response) => {
-        if (response.data & (response.data.length > 0)) {
+        if (response.data && response.data !== []) {
           setTimbratura(response.data[0]);
           setStatoTimbratura(response.data[0].uscita ? 1 : 3);
         } else {
@@ -55,8 +55,9 @@ function SituazioneTimbratura({ setTotaleOreContratto }) {
       })
       .catch((err) => {
         setLabelDescrizione("Impossibile recuperare l'ultima timbratura");
-        console.log("Errore nel recuperare l'ultima timbratura ");
-        console.error(err);
+        console.error(
+          "Errore nel recuperare l'ultima timbratura: " + err.response.data
+        );
       });
   };
 
@@ -90,7 +91,7 @@ function SituazioneTimbratura({ setTotaleOreContratto }) {
       setStatoTimbratura(5);
       setTimbratura(timbraturaAggiornata);
     }, 2000);
-    setTotaleOreContratto();
+    recuperaTotaleContratto();
   };
 
   return (

@@ -11,20 +11,25 @@ function Main() {
   }, []);
 
   const recuperaTotaleContratto = async () => {
-    const elencoTimbrature = await TimbraturaService.getAll();
-    let sommaTimbrature = Array.from(elencoTimbrature.data).reduce(
-      (totale, numero) => {
-        return totale + parseInt(numero["differenza"] || 0);
-      },
-      0
-    );
-    setTotaleOreContratto(sommaTimbrature);
+    try {
+      const elencoTimbrature = await TimbraturaService.getAll();
+      let sommaTimbrature = await Array.from(elencoTimbrature.data).reduce(
+        (totale, numero) => {
+          console.log(totale);
+          return totale + parseInt(numero["differenza"] || 0);
+        },
+        0
+      );
+      setTotaleOreContratto(sommaTimbrature);
+    } catch (err) {
+      console.log(err.response.data);
+    }
   };
 
   return (
     <main className="main">
       <RiepilogoContratto totaleOreContratto={totaleOreContratto} />
-      <SituazioneTimbratura setTotaleOreContratto={recuperaTotaleContratto} />
+      <SituazioneTimbratura recuperaTotaleContratto={recuperaTotaleContratto} />
     </main>
   );
 }
