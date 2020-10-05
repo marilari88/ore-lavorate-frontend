@@ -61,7 +61,8 @@ html {
         }
       }
       .infoLogin {
-        width: 200px;
+        cursor: pointer;
+        max-width: 200px;
         display: flex;
         align-items: center;
         color: white;
