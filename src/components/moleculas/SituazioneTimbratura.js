@@ -45,7 +45,10 @@ function SituazioneTimbratura({ recuperaTotaleContratto }) {
   const recuperoUltimaTimbratura = () => {
     TimbraturaService.getLast()
       .then((response) => {
-        if (response.data && response.data !== []) {
+        if (response.data.length === 0) {
+          setTimbratura({});
+          setStatoTimbratura(1);
+        } else if (response.data) {
           setTimbratura(response.data[0]);
           setStatoTimbratura(response.data[0].uscita ? 1 : 3);
         } else {
@@ -54,9 +57,8 @@ function SituazioneTimbratura({ recuperaTotaleContratto }) {
         }
       })
       .catch((err) => {
-        setLabelDescrizione("Impossibile recuperare l'ultima timbratura");
-        console.error(
-          "Errore nel recuperare l'ultima timbratura: " + err.response.data
+        setLabelDescrizione(
+          `Impossibile recuperare l'ultima timbratura: ${err}`
         );
       });
   };

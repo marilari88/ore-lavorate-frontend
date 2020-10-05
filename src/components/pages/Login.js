@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { useAuth } from "../../context/UserContext";
 import AuthService from "../../services/AuthService";
+
 function Login(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
-  const [loggedIn, setLoggedIn] = useState(false);
   const [referer, setReferer] = useState("/");
+
+  const history = useHistory();
+  const { setUserData } = useAuth();
 
   useEffect(() => {
     props.location.state !== undefined &&
@@ -20,9 +24,16 @@ function Login(props) {
         email,
         password,
       });
-      setMessage(response.data.message);
       localStorage.setItem("auth-token", response.data.token);
-      setLoggedIn(true);
+      console.log("Token salvatao");
+      setMessage(response.data.message);
+      await setUserData({
+        id: response.data.user.id,
+        name: response.data.user.name,
+      });
+      setTimeout(() => {
+        history.push(referer);
+      }, 1000);
     } catch (err) {
       if (err.response) setMessage(err.response.data.error);
     }
@@ -47,7 +58,6 @@ function Login(props) {
       </form>
       <div className="messaggio">{message}</div>
       <Link to="/register">Non sei registrato?</Link>
-      {loggedIn && <Redirect to={referer} />}
     </div>
   );
 }

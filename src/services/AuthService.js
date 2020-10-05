@@ -1,21 +1,26 @@
-import http from "../http-common";
+import axios from "axios";
+import AuthHeader from "./AuthHeader";
 
 class AuthService {
+  constructor() {
+    this.URL = process.env.REACT_APP_PUBLIC_API_URL;
+  }
+
   async checkToken() {
     const token = localStorage.getItem("auth-token");
     if (token) {
-      return await http.get("/user/checktoken");
+      return await axios.get(this.URL + "/user/checktoken", AuthHeader());
     } else {
       return;
     }
   }
 
   async registerUser(user) {
-    return await http.post("/user/register", user);
+    return await axios.post(this.URL + "/user/register", user);
   }
 
   async loginUser(user) {
-    return await http.post("user/login", user);
+    return await axios.post(this.URL + "/user/login", user);
   }
 }
 

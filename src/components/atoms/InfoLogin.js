@@ -9,7 +9,6 @@ function InfoLogin({ userData, setUserData }) {
 
   const logOut = () => {
     handleClose();
-
     localStorage.removeItem("auth-token");
     setUserData({});
     history.push("/login");
