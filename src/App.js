@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
 
-import Header from "./components/organisms/Header";
 import ElencoTimbrature from "./components/pages/ElencoTimbrature";
 import Register from "./components/pages/Register";
 import Login from "./components/pages/Login";
@@ -46,7 +45,6 @@ function App() {
           <Splashscreen />
         ) : (
           <>
-            <Header />
             <Switch>
               <PrivateRoute exact path="/" component={Main} />
               <PrivateRoute
