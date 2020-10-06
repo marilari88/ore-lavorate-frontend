@@ -49,6 +49,7 @@ function Login(props) {
             <input
               id="email"
               type="email"
+              autoComplete="off"
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>

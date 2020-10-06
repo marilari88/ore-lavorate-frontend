@@ -163,6 +163,8 @@ html {
           padding: 1rem 2rem;
           box-sizing: border-box;
           text-align: center;
+          height: 100px;
+          line-height: 100px;
         }
 
         .formLogin {
@@ -178,6 +180,8 @@ html {
           justify-content: center;
           align-items: center;
           box-sizing: border-box;
+          padding-top: 140px;
+
           .rigaForm {
             display: flex;
             flex-direction: column;
@@ -216,12 +220,12 @@ html {
               cursor: pointer;
             }
           }
-
           .messaggioForm {
             color: red;
             padding: 0.5rem 1rem;
             text-align: center;
-            height: 5%;
+            height: 50px;
+            line-height: 50px;
           }
 
           .linkForm {
@@ -230,6 +234,8 @@ html {
             padding: 0.5rem 2rem;
             text-align: right;
             color: $colore-secondario;
+            height: 50px;
+            line-height: 50px;
             &:hover {
               color: $colore-principale;
               text-decoration: underline;
@@ -237,7 +243,7 @@ html {
           }
         }
         .footer {
-          height: 100px;
+          height: 80px;
           .nomeApp {
             text-align: center;
             color: $colore-principale;
