@@ -4,6 +4,7 @@ $colore-principale: #89c5cc;
 $colore-secondario: #69a1ac;
 $colore-successo: #a2e88b;
 $colore-sfondo-riquadro: #f4f2f2;
+$colore-grigio: #c5cfd6;
 
 * {
   margin: 0px;
@@ -28,7 +29,7 @@ a {
 }
 
 html {
-  background-color: $colore-principale;
+  background-color: white;
   font-size: 18px;
   font-family: "Fira Sans";
   .App {
@@ -61,7 +62,6 @@ html {
         }
       }
       .infoLogin {
-        cursor: pointer;
         max-width: 200px;
         display: flex;
         align-items: center;
@@ -70,6 +70,10 @@ html {
         .nomeOperatore {
           padding: 10px;
           text-align: right;
+        }
+        &:hover {
+          cursor: pointer;
+          background-color: lighten($colore-principale, 5%);
         }
       }
     }
@@ -139,6 +143,116 @@ html {
           color: $colore-principale;
           font-size: 24px;
           line-height: 40px;
+        }
+      }
+    }
+
+    .loginPage {
+      height: 100%;
+      width: 100%;
+
+      .contenitoreLogin {
+        max-width: 600px;
+        margin: 0px auto;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+
+        h1 {
+          color: $colore-secondario;
+          padding: 1rem 2rem;
+          box-sizing: border-box;
+          text-align: center;
+        }
+
+        .formLogin {
+          background: url("./asset/sfondo_login.svg");
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-size: contain;
+          flex: 1;
+          width: 100%;
+          margin: auto;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          box-sizing: border-box;
+          .rigaForm {
+            display: flex;
+            flex-direction: column;
+            margin: 0.5rem auto;
+            align-items: center;
+            label {
+              color: $colore-secondario;
+              font-size: 18px;
+            }
+            input {
+              transition: box-shadow 0.3s;
+              font-size: 18px;
+              font-weight: 800;
+              color: $colore-secondario;
+              border-radius: 20px;
+              margin: 0.75rem;
+              padding: 0.75rem;
+              border: none;
+              text-align: center;
+              &:focus {
+                box-shadow: 0 0 1rem $colore-principale;
+                outline: none;
+              }
+            }
+          }
+          .submitForm {
+            margin: 20px 0;
+            background-color: $colore-principale;
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 20px;
+            font-size: 18px;
+            &:hover {
+              background-color: lighten($colore-principale, 5%);
+              cursor: pointer;
+            }
+          }
+
+          .messaggioForm {
+            color: red;
+            padding: 0.5rem 1rem;
+            text-align: center;
+            height: 5%;
+          }
+
+          .linkForm {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 0.5rem 2rem;
+            text-align: right;
+            color: $colore-secondario;
+            &:hover {
+              color: $colore-principale;
+              text-decoration: underline;
+            }
+          }
+        }
+        .footer {
+          height: 100px;
+          .nomeApp {
+            text-align: center;
+            color: $colore-principale;
+            font-size: 30px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            line-height: 30px;
+            margin: 0.24rem 1rem;
+          }
+          .descrizioneApp {
+            text-align: center;
+            color: $colore-grigio;
+            line-height: 30px;
+            margin: 0.25rem 1rem;
+          }
         }
       }
     }

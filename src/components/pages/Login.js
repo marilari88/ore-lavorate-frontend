@@ -40,24 +40,37 @@ function Login(props) {
   };
 
   return (
-    <div>
-      <h1>Login</h1>
-      <form onSubmit={(e) => submit(e)}>
-        <input
-          id="email"
-          type="email"
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <label htmlFor="password">Password</label>
-        <input
-          id="password"
-          type="password"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <input type="submit" value="Accedi" />
-      </form>
-      <div className="messaggio">{message}</div>
-      <Link to="/register">Non sei registrato?</Link>
+    <div className="loginPage">
+      <div className="contenitoreLogin">
+        <h1>Login</h1>
+        <form onSubmit={(e) => submit(e)} className="formLogin">
+          <div className="rigaForm">
+            <label htmlFor="email">Email </label>
+            <input
+              id="email"
+              type="email"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div className="rigaForm">
+            <label htmlFor="password">Password</label>
+            <input
+              id="password"
+              type="password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+          <input type="submit" className="submitForm" value="Accedi" />
+          <div className="messaggioForm">{message}</div>
+          <Link to="/register" className="linkForm">
+            Non sei registrato?
+          </Link>
+        </form>
+        <div className="footer">
+          <div className="nomeApp">TIMESHEET.app</div>
+          <div className="descrizioneApp">Rilevazione tempo di lavoro</div>
+        </div>
+      </div>
     </div>
   );
 }
