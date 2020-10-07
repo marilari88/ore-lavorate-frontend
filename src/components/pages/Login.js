@@ -62,13 +62,13 @@ function Login(props) {
             />
           </div>
           <input type="submit" className="submitForm" value="Accedi" />
-          <div className="messaggioForm">{message}</div>
           <Link to="/register" className="linkForm">
             Non sei registrato?
           </Link>
+          <div className="messaggioForm">{message}</div>
         </form>
         <div className="footer">
-          <div className="nomeApp">TIMESHEET.app</div>
+          <div className="nomeApp">timesheet.app</div>
           <div className="descrizioneApp">Rilevazione tempo di lavoro</div>
         </div>
       </div>

@@ -17,9 +17,16 @@ import PrivateRoute from "./PrivateRoute";
 function App() {
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
-
+  const [showSplashscreen, setShowSplashscreen] = useState(true);
   useEffect(() => {
+    console.log("inizio splash");
+    setTimeout(() => {
+      console.log("fine splash");
+      setShowSplashscreen(false);
+    }, 2000);
+
     const authToken = () => {
+      console.log("inizio check");
       AuthService.checkToken()
         .then((response) => {
           if (response)
@@ -27,14 +34,11 @@ function App() {
               id: response.data.user.id,
               name: response.data.user.name,
             });
+          setLoading(false);
+          console.log("fine check");
         })
         .catch((err) => {
           console.log(err);
-        })
-        .finally(() => {
-          setTimeout(() => {
-            setLoading(false);
-          }, 2000);
         });
     };
     authToken();
@@ -43,7 +47,7 @@ function App() {
   return (
     <div className="App">
       <UserContext.Provider value={{ userData, setUserData }}>
-        {loading ? (
+        {loading || showSplashscreen ? (
           <Splashscreen />
         ) : (
           <>
