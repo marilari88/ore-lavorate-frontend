@@ -32,7 +32,9 @@ function App() {
           console.log(err);
         })
         .finally(() => {
-          setLoading(false);
+          setTimeout(() => {
+            setLoading(false);
+          }, 2000);
         });
     };
     authToken();
