@@ -61,12 +61,12 @@ function Login(props) {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <input type="submit" className="submitForm" value="Accedi" />
-          <Link to="/register" className="linkForm">
-            Non sei registrato?
-          </Link>
-          <div className="messaggioForm">{message}</div>
         </form>
+        <input type="submit" className="submitForm" value="Accedi" />
+        <Link to="/register" className="linkForm">
+          Non sei registrato?
+        </Link>
+        <div className="messaggioForm">{message}</div>
         <div className="footer">
           <div className="nomeApp">timesheet.app</div>
           <div className="descrizioneApp">Rilevazione tempo di lavoro</div>

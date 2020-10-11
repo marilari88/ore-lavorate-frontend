@@ -150,23 +150,30 @@ html {
     .splashscreen {
       height: 100%;
       width: 100%;
-      background: url("./asset/splashscreen.svg") white;
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-size: 60% 60%;
+      background: white;
+      display: flex;
+      flex-direction: column;
+
+      .immagineSplashscreen {
+        flex: 1;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+          width: 75%;
+          height: auto;
+        }
+      }
 
       .loader {
-        position: absolute;
-        bottom: 120px;
-        width: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
       }
 
       .footer {
-        position: absolute;
-        bottom: 10px;
         width: 100%;
         height: 80px;
         .nomeApp {
@@ -190,10 +197,7 @@ html {
     .loginPage {
       height: 100%;
       width: 100%;
-      background: url("./asset/sfondo_login.svg") white;
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-size: 60% 60%;
+      background: white;
 
       .contenitoreLogin {
         max-width: 600px;
@@ -201,6 +205,7 @@ html {
         height: 100%;
         display: flex;
         flex-direction: column;
+        align-items: center;
 
         h1 {
           color: $colore-secondario;
@@ -215,14 +220,18 @@ html {
         }
 
         .formLogin {
-          flex: 1;
-          width: 100%;
-          margin: auto;
+          width: 500px;
+          height: 500px;
+          margin-top: auto;
+          margin-bottom: auto;
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: center;
           box-sizing: border-box;
+          border-radius: 50%;
+          background-color: $colore-principale;
+          background: #ff9b2133;
           .rigaForm {
             display: flex;
             flex-direction: column;
@@ -248,40 +257,40 @@ html {
               }
             }
           }
-          .submitForm {
-            margin: 20px 0;
-            background-color: $colore-principale;
-            color: white;
-            padding: 0.75rem 2rem;
-            border: none;
-            border-radius: 20px;
-            font-size: 18px;
-            outline: none;
-            &:hover {
-              background-color: lighten($colore-principale, 5%);
-              cursor: pointer;
-            }
+        }
+        .submitForm {
+          margin: 20px auto;
+          background-color: $colore-principale;
+          color: white;
+          padding: 0.75rem 2rem;
+          border: none;
+          border-radius: 20px;
+          font-size: 18px;
+          outline: none;
+          &:hover {
+            background-color: lighten($colore-principale, 5%);
+            cursor: pointer;
           }
-          .messaggioForm {
-            color: red;
-            padding: 0.5rem 1rem;
-            text-align: center;
-            height: 50px;
-            line-height: 50px;
-          }
+        }
+        .messaggioForm {
+          color: red;
+          padding: 0.5rem 1rem;
+          text-align: center;
+          height: 50px;
+          line-height: 50px;
+        }
 
-          .linkForm {
-            width: 100%;
-            box-sizing: border-box;
-            padding: 0.5rem 2rem;
-            text-align: right;
-            color: $colore-secondario;
-            height: 50px;
-            line-height: 50px;
-            &:hover {
-              color: $colore-principale;
-              text-decoration: underline;
-            }
+        .linkForm {
+          width: 100%;
+          box-sizing: border-box;
+          padding: 0.5rem 2rem;
+          text-align: right;
+          color: $colore-secondario;
+          height: 50px;
+          line-height: 50px;
+          &:hover {
+            color: $colore-principale;
+            text-decoration: underline;
           }
         }
         .footer {

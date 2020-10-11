@@ -1,14 +1,19 @@
 import React from "react";
 import Loader from "react-loader-spinner";
 
+import SplashscreenImage from "../../asset/splashscreen.svg";
+
 export default function Splashscreen() {
   return (
     <div className="splashscreen">
+      <div className="immagineSplashscreen">
+        <img src={SplashscreenImage} alt="timesheet.app" />
+      </div>
       <Loader
-        type="Watch"
+        type="ThreeDots"
         color="#89c5cc"
-        height={50}
-        width={50}
+        height={40}
+        width={40}
         className="loader"
       />
       <div className="footer">
