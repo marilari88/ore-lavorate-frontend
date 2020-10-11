@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import AuthService from "../../services/AuthService";
 
 function Register() {
@@ -8,6 +8,9 @@ function Register() {
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [message, setMessage] = useState("");
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  const history = useHistory();
 
   const submit = (e) => {
     e.preventDefault();
@@ -24,7 +27,13 @@ function Register() {
     })
       .then((response) => {
         setMessage(response.data.message);
-        console.log(response);
+
+        if (response.statusText === "OK") {
+          setIsAuthenticated(true);
+          setTimeout(() => {
+            history.push("/login");
+          }, 1000);
+        }
       })
       .catch((error) => {
         if (error.response) setMessage(error.response.data.error);
@@ -73,7 +82,13 @@ function Register() {
             Già registrato?
           </Link>
         </form>
-        <div className="messaggioForm">{message}</div>
+        <div
+          className={`messaggioForm ${
+            isAuthenticated ? "successMessage" : "errorMessage"
+          }`}
+        >
+          {message}
+        </div>
       </div>
       <div className="footer">
         <div className="nomeApp">timesheet.app</div>
