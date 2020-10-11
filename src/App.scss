@@ -233,9 +233,8 @@ html {
           display: flex;
         }
         form {
-          width: 500px;
-          height: 500px;
-          min-height: 500px;
+          width: 465px;
+          height: 465px;
           display: flex;
           flex-direction: column;
           justify-content: center;
@@ -302,8 +301,8 @@ html {
         .messaggioForm {
           padding: 0.5rem 1rem;
           text-align: center;
-          height: 40px;
-          line-height: 40px;
+          height: 30px;
+          line-height: 30px;
           font-weight: bold;
           &.successMessage {
             color: $colore-successo;
