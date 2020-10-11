@@ -4,6 +4,7 @@ $colore-principale: #89c5cc;
 $colore-secondario: #69a1ac;
 $colore-successo: #a2e88b;
 $colore-sfondo-riquadro: #f4f2f2;
+$colore-arancione-trasparente: #ff9b2133;
 $colore-grigio: #c5cfd6;
 
 * {
@@ -198,57 +199,60 @@ html {
       height: 100%;
       width: 100%;
       background: white;
+      background-size: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: url("./asset/sfondo_login.svg") white;
+      background-size: 100% 100%;
+      background-position: center center;
+      background-repeat: no-repeat;
 
       .contenitoreLogin {
-        max-width: 600px;
-        margin: 0px auto;
-        height: 100%;
         display: flex;
         flex-direction: column;
-        align-items: center;
-
-        h1 {
-          color: $colore-secondario;
-          padding: 0 2rem;
-          box-sizing: border-box;
-          text-align: center;
-          height: 200px;
-          line-height: 100px;
-          justify-content: center;
-          align-items: center;
-          display: flex;
-        }
-
+        margin-top: auto;
+        margin-bottom: auto;
         .formLogin {
           width: 500px;
           height: 500px;
-          margin-top: auto;
-          margin-bottom: auto;
+          min-height: 500px;
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: center;
           box-sizing: border-box;
           border-radius: 50%;
-          background-color: $colore-principale;
-          background: #ff9b2133;
+          background: $colore-arancione-trasparente;
+
+          h1 {
+            color: $colore-secondario;
+            padding: 0 2rem;
+            box-sizing: border-box;
+            text-align: center;
+            height: 100px;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+          }
+
           .rigaForm {
             display: flex;
             flex-direction: column;
-            margin: 0.5rem auto;
+            margin: 0.2rem auto;
             align-items: center;
             label {
               color: $colore-secondario;
-              font-size: 16px;
+              font-size: 18px;
             }
             input {
               transition: box-shadow 0.3s;
-              font-size: 16px;
+              font-size: 18px;
               font-weight: 800;
               color: $colore-secondario;
               border-radius: 20px;
               margin: 0.75rem;
-              padding: 0.5rem;
+              padding: 0.6rem;
               border: none;
               text-align: center;
               &:focus {
@@ -257,62 +261,63 @@ html {
               }
             }
           }
-        }
-        .submitForm {
-          margin: 20px auto;
-          background-color: $colore-principale;
-          color: white;
-          padding: 0.75rem 2rem;
-          border: none;
-          border-radius: 20px;
-          font-size: 18px;
-          outline: none;
-          &:hover {
-            background-color: lighten($colore-principale, 5%);
-            cursor: pointer;
+          .submitForm {
+            margin: 20px auto;
+            background-color: $colore-secondario;
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 20px;
+            font-size: 18px;
+            outline: none;
+            &:hover {
+              background-color: lighten($colore-principale, 5%);
+              cursor: pointer;
+            }
+          }
+          .linkForm {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 0.5rem 2rem;
+            text-align: center;
+            color: $colore-secondario;
+            height: 50px;
+            line-height: 50px;
+            &:hover {
+              color: $colore-principale;
+              text-decoration: underline;
+            }
           }
         }
+
         .messaggioForm {
           color: red;
           padding: 0.5rem 1rem;
           text-align: center;
-          height: 50px;
-          line-height: 50px;
+          height: 40px;
+          line-height: 40px;
+          font-weight: bold;
         }
-
-        .linkForm {
-          width: 100%;
-          box-sizing: border-box;
-          padding: 0.5rem 2rem;
-          text-align: right;
-          color: $colore-secondario;
-          height: 50px;
-          line-height: 50px;
-          &:hover {
-            color: $colore-principale;
-            text-decoration: underline;
-          }
+      }
+      .footer {
+        padding-bottom: 10px;
+        width: 100%;
+        height: 80px;
+        box-sizing: border-box;
+        .nomeApp {
+          text-align: center;
+          color: $colore-principale;
+          font-size: 30px;
+          font-weight: bold;
+          letter-spacing: 1px;
+          line-height: 30px;
+          margin: 0.24rem 1rem;
         }
-        .footer {
-          padding-bottom: 10px;
-          width: 100%;
-          height: 80px;
-          box-sizing: border-box;
-          .nomeApp {
-            text-align: center;
-            color: $colore-principale;
-            font-size: 30px;
-            font-weight: bold;
-            letter-spacing: 1px;
-            line-height: 30px;
-            margin: 0.24rem 1rem;
-          }
-          .descrizioneApp {
-            text-align: center;
-            color: $colore-grigio;
-            line-height: 30px;
-            margin: 0.25rem 1rem;
-          }
+        .descrizioneApp {
+          text-align: center;
+          color: $colore-grigio;
+          line-height: 30px;
+          margin: 0.25rem 1rem;
         }
       }
     }
