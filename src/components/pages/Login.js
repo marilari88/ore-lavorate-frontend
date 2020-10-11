@@ -8,6 +8,7 @@ function Login(props) {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const [referer, setReferer] = useState("/");
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const history = useHistory();
   const { setUserData } = useAuth();
@@ -31,6 +32,7 @@ function Login(props) {
         id: response.data.user.id,
         name: response.data.user.name,
       });
+      await setIsAuthenticated(true);
       setTimeout(() => {
         history.push(referer);
       }, 1000);
@@ -66,7 +68,13 @@ function Login(props) {
             Non sei registrato?
           </Link>
         </form>
-        <div className="messaggioForm">{message}</div>
+        <div
+          className={`messaggioForm ${
+            isAuthenticated ? "successMessage" : "errorMessage"
+          }`}
+        >
+          {message}
+        </div>
       </div>
       <div className="footer">
         <div className="nomeApp">timesheet.app</div>
