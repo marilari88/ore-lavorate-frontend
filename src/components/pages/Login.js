@@ -42,8 +42,8 @@ function Login(props) {
   return (
     <div className="loginPage">
       <div className="contenitoreLogin">
+        <h1>Login</h1>
         <form onSubmit={(e) => submit(e)} className="formLogin">
-          <h1>Login</h1>
           <div className="rigaForm">
             <label htmlFor="email">Email </label>
             <input

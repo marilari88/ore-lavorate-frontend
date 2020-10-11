@@ -195,7 +195,8 @@ html {
       }
     }
 
-    .loginPage {
+    .loginPage,
+    .registerPage {
       height: 100%;
       width: 100%;
       background: white;
@@ -207,13 +208,25 @@ html {
       background-size: 100% 100%;
       background-position: center center;
       background-repeat: no-repeat;
+      overflow: hidden;
 
-      .contenitoreLogin {
+      .contenitoreLogin,
+      .contenitoreRegister {
         display: flex;
         flex-direction: column;
         margin-top: auto;
         margin-bottom: auto;
-        .formLogin {
+        align-items: center;
+        h1 {
+          color: $colore-secondario;
+          padding: 0 2rem;
+          box-sizing: border-box;
+          text-align: center;
+          height: 100px;
+          align-items: center;
+          display: flex;
+        }
+        form {
           width: 500px;
           height: 500px;
           min-height: 500px;
@@ -225,21 +238,10 @@ html {
           border-radius: 50%;
           background: $colore-arancione-trasparente;
 
-          h1 {
-            color: $colore-secondario;
-            padding: 0 2rem;
-            box-sizing: border-box;
-            text-align: center;
-            height: 100px;
-            justify-content: center;
-            align-items: center;
-            display: flex;
-          }
-
           .rigaForm {
             display: flex;
             flex-direction: column;
-            margin: 0.2rem auto;
+            margin: 0 auto;
             align-items: center;
             label {
               color: $colore-secondario;
@@ -251,7 +253,8 @@ html {
               font-weight: 800;
               color: $colore-secondario;
               border-radius: 20px;
-              margin: 0.75rem;
+              margin-bottom: 0.5rem;
+              margin-top: 0.4rem;
               padding: 0.6rem;
               border: none;
               text-align: center;
@@ -262,7 +265,7 @@ html {
             }
           }
           .submitForm {
-            margin: 20px auto;
+            margin: 0.6rem auto;
             background-color: $colore-secondario;
             color: white;
             padding: 0.75rem 2rem;
@@ -278,11 +281,11 @@ html {
           .linkForm {
             width: 100%;
             box-sizing: border-box;
-            padding: 0.5rem 2rem;
+            margin: 0.25rem 2rem;
             text-align: center;
             color: $colore-secondario;
-            height: 50px;
-            line-height: 50px;
+            height: 40px;
+            line-height: 40px;
             &:hover {
               color: $colore-principale;
               text-decoration: underline;
