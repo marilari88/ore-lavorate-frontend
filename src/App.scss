@@ -64,7 +64,6 @@ html {
         }
       }
       .infoLogin {
-        max-width: 250px;
         display: flex;
         align-items: center;
         color: white;
@@ -72,6 +71,10 @@ html {
         border-radius: 20px;
         padding: 3px 5px;
         .nomeOperatore {
+          max-width: 150px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
           padding: 10px;
           text-align: right;
         }
