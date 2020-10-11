@@ -225,16 +225,16 @@ html {
         align-items: center;
         h1 {
           color: $colore-secondario;
-          padding: 0 2rem;
+          padding: 2rem 2rem;
           box-sizing: border-box;
           text-align: center;
-          height: 100px;
+          height: 40px;
           align-items: center;
           display: flex;
         }
         form {
-          width: 465px;
-          height: 465px;
+          width: 450px;
+          height: 450px;
           display: flex;
           flex-direction: column;
           justify-content: center;
@@ -250,7 +250,7 @@ html {
             align-items: center;
             label {
               color: $colore-secondario;
-              font-size: 18px;
+              font-size: 16px;
             }
             input {
               transition: box-shadow 0.3s;
@@ -260,7 +260,7 @@ html {
               border-radius: 20px;
               margin-bottom: 0.5rem;
               margin-top: 0.4rem;
-              padding: 0.6rem;
+              padding: 0.5rem;
               border: none;
               text-align: center;
               &:focus {
@@ -301,8 +301,7 @@ html {
         .messaggioForm {
           padding: 0.5rem 1rem;
           text-align: center;
-          height: 30px;
-          line-height: 30px;
+          height: 20px;
           font-weight: bold;
           &.successMessage {
             color: $colore-successo;
