@@ -333,5 +333,65 @@ html {
         }
       }
     }
+
+    .elencoTimbraturePage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+
+      h1 {
+        color: $colore-secondario;
+      }
+
+      .elencoTimbrature {
+        max-width: 580px;
+        flex: 1 1 auto;
+        overflow-y: auto;
+        min-height: 0px;
+
+        .giornoTimbratura {
+          color: white;
+          display: flex;
+          align-items: center;
+          margin-top: 1.5rem;
+          > * {
+            margin-left: 10px;
+          }
+        }
+
+        .rigaTimbratura {
+          width: 100%;
+          background-color: white;
+          color: $colore-secondario;
+          border-radius: 20px;
+          margin: 0.5rem 0 1rem 0;
+          padding: 0.5rem;
+          display: flex;
+          justify-content: space-between;
+          box-sizing: border-box;
+          > * {
+            display: flex;
+            align-items: center;
+            > * {
+              margin: 0 0.25rem 0 0;
+            }
+          }
+          .differenza {
+            min-width: 160px;
+          }
+        }
+      }
+
+      .rigaPulsanti {
+        width: 100%;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: url("./asset/sfondo.svg") no-repeat;
+        background-size: cover;
+      }
+    }
   }
 }

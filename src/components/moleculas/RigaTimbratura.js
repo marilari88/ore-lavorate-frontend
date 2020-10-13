@@ -1,47 +1,39 @@
 import React from "react";
-import { stringaTempo } from "../../utils/differenzaorario";
-import PropTypes from "prop-types";
+import { stringaTempoBreve } from "../../utils/differenzaorario";
+import { stringaOrario } from "../../utils/datetime";
+import CallMadeIcon from "@material-ui/icons/CallMade";
+import TimelapseIcon from "@material-ui/icons/Timelapse";
 
-class RigaTimbratura extends React.Component {
-  render() {
-    return (
-      <div>
-        <div className="ingresso">
-          Ingresso alle{" "}
-          {new Date(this.props.timbratura.ingresso).toLocaleString()}
-        </div>
-        {this.props.timbratura.uscita && (
-          <>
-            <div className="uscita">
-              Uscita alle{" "}
-              {new Date(this.props.timbratura.uscita).toLocaleString()}
-            </div>
-            <div className="differenza">
-              Hai lavorato {stringaTempo(this.props.timbratura.differenza)}
-            </div>
-          </>
-        )}
+function RigaTimbratura({ timbratura }) {
+  return (
+    <div className="rigaTimbratura">
+      <div className="ingresso">
+        <CallMadeIcon style={{ color: "#a2e88b" }} />{" "}
+        {stringaOrario(new Date(timbratura.ingresso))}
+      </div>
+      {timbratura.uscita && (
+        <>
+          <div className="uscita">
+            <CallMadeIcon
+              style={{ color: "#f26d6d", transform: "rotate(90deg)" }}
+            />
+            {stringaOrario(new Date(timbratura.uscita))}
+          </div>
+          <div className="differenza">
+            <TimelapseIcon />
+            {stringaTempoBreve(timbratura.differenza)}
+          </div>
+        </>
+      )}
 
-        {/*    <Link
-          href="/timbratura/[idtimbratura]"
-          as={`/timbratura/${this.props.timbratura.id}`}
-        >
-          <button>Seleziona</button>
-        </Link> */}
-
-        <button
+      {/*     <button
           className="cancellaTimbratura"
-          onClick={() => this.props.cancellaTimbratura()}
+          onClick={() => timbratura.cancellaTimbratura()}
         >
           Cancella
-        </button>
-      </div>
-    );
-  }
+        </button> */}
+    </div>
+  );
 }
-RigaTimbratura.propTypes = {
-  timbratura: PropTypes.object.isRequired,
-  cancellaTimbratura: PropTypes.func,
-};
 
 export default RigaTimbratura;

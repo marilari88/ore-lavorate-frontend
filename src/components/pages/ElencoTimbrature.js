@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from "react";
 import TimbraturaService from "../../services/TimbraturaService";
+import { stringaGiorno } from "../../utils/datetime";
 import RigaTimbratura from "../moleculas/RigaTimbratura";
+import TodayIcon from "@material-ui/icons/Today";
+import { useHistory } from "react-router-dom";
 
 export default function ElencoTimbrature() {
+  const history = useHistory();
+
+  let giornoTimbraturaCursor;
   const [elencoTimbrature, setElencoTimbrature] = useState([]);
+
   useEffect(() => {
     caricamentoElencoTimbrature();
   }, []);
@@ -26,18 +33,42 @@ export default function ElencoTimbrature() {
     });
   };
 
+  const isNewDay = (giornoTimbratura) => {
+    if (giornoTimbratura !== giornoTimbraturaCursor) {
+      giornoTimbraturaCursor = giornoTimbratura;
+      return true;
+    }
+    return false;
+  };
+
   return (
-    <div>
-      {elencoTimbrature &&
-        Array.from(elencoTimbrature).map((timbratura) => (
-          <>
-            <RigaTimbratura
-              key={timbratura._id}
-              timbratura={timbratura}
-              cancellaTimbratura={() => cancellaTimbratura(timbratura._id)}
-            />
-          </>
-        ))}
+    <div className="elencoTimbraturePage">
+      <h1>Elenco timbrature</h1>
+      <div className="elencoTimbrature">
+        {elencoTimbrature &&
+          Array.from(elencoTimbrature).map((timbratura) => (
+            <>
+              {isNewDay(stringaGiorno(timbratura.ingresso)) && (
+                <div className="giornoTimbratura">
+                  <TodayIcon />
+                  <div className="stringaGiorno">
+                    {stringaGiorno(timbratura.ingresso)}
+                  </div>
+                </div>
+              )}
+              <RigaTimbratura
+                key={timbratura._id}
+                timbratura={timbratura}
+                cancellaTimbratura={() => cancellaTimbratura(timbratura._id)}
+              />
+            </>
+          ))}
+      </div>
+      <div className="rigaPulsanti">
+        <button className="pulsante" onClick={() => history.push("/")}>
+          Indietro
+        </button>
+      </div>
     </div>
   );
 }
