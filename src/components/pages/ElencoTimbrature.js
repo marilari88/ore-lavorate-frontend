@@ -47,7 +47,7 @@ export default function ElencoTimbrature() {
       <div className="elencoTimbrature">
         {elencoTimbrature &&
           Array.from(elencoTimbrature).map((timbratura) => (
-            <>
+            <React.Fragment key={timbratura._id}>
               {isNewDay(stringaGiorno(timbratura.ingresso)) && (
                 <div className="giornoTimbratura">
                   <TodayIcon />
@@ -57,11 +57,10 @@ export default function ElencoTimbrature() {
                 </div>
               )}
               <RigaTimbratura
-                key={timbratura._id}
                 timbratura={timbratura}
                 cancellaTimbratura={() => cancellaTimbratura(timbratura._id)}
               />
-            </>
+            </React.Fragment>
           ))}
       </div>
       <div className="rigaPulsanti">
