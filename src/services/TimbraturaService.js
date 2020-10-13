@@ -13,7 +13,7 @@ class TimbraturaDataService {
   }
 
   async getAll() {
-    return await axios.get(this.URL + "/timbrature", AuthHeader());
+    return await axios.get(this.URL + "/timbrature/?order=-1", AuthHeader());
   }
 
   async get(id) {
