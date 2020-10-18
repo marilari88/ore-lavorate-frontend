@@ -345,10 +345,19 @@ html {
       }
 
       .elencoTimbrature {
-        max-width: 580px;
+        width: 100%;
+        padding: 0.5rem;
+        box-sizing: border-box;
+        max-width: 600px;
         flex: 1 1 auto;
-        overflow-y: auto;
+        overflow-y: scroll;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
         height: 300px;
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
 
         .giornoTimbratura {
           color: white;
