@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import GoogleLogin from "react-google-login";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../../context/UserContext";
 import AuthService from "../../services/AuthService";
@@ -41,6 +42,10 @@ function Login(props) {
     }
   };
 
+  const responseGoogle = (response) => {
+    console.log(response);
+  };
+
   return (
     <div className="loginPage">
       <div className="contenitoreLogin">
@@ -64,6 +69,13 @@ function Login(props) {
             />
           </div>
           <input type="submit" className="submitForm" value="Accedi" />
+          <GoogleLogin
+            clientId="189102113218-vlo8jfnijik7dkjn4n6jrs0htk5okobf.apps.googleusercontent.com"
+            buttonText="Accedi con Google"
+            onSuccess={responseGoogle}
+            onFailure={responseGoogle}
+            cookiePolicy={"single_host_origin"}
+          />
           <Link to="/register" className="linkForm">
             Non sei registrato?
           </Link>
