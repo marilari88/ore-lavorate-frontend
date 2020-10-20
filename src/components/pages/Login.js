@@ -42,8 +42,12 @@ function Login(props) {
     }
   };
 
-  const responseGoogle = (response) => {
-    console.log(response);
+  const onGoogleLoginSuccess = async (googleUser) => {
+    await AuthService.loginGoogleUser(googleUser.getAuthResponse().id_token);
+  };
+
+  const onGoogleLoginFailure = (res) => {
+    console.log(res);
   };
 
   return (
@@ -72,8 +76,8 @@ function Login(props) {
           <GoogleLogin
             clientId="189102113218-vlo8jfnijik7dkjn4n6jrs0htk5okobf.apps.googleusercontent.com"
             buttonText="Accedi con Google"
-            onSuccess={responseGoogle}
-            onFailure={responseGoogle}
+            onSuccess={onGoogleLoginSuccess}
+            onFailure={onGoogleLoginFailure}
             cookiePolicy={"single_host_origin"}
           />
           <Link to="/register" className="linkForm">

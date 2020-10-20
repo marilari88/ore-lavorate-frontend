@@ -22,6 +22,14 @@ class AuthService {
   async loginUser(user) {
     return await axios.post(this.URL + "/user/login", user);
   }
+
+  async loginGoogleUser(tokenId) {
+    const data = {
+      tokenid: tokenId,
+    };
+
+    return await axios.post(this.URL + "/user/googlelogin", data);
+  }
 }
 
 export default new AuthService();
