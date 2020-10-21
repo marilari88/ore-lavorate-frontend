@@ -27,13 +27,12 @@ function Login(props) {
         password,
       });
       localStorage.setItem("auth-token", response.data.token);
-      console.log("Token salvatao");
       setMessage(response.data.message);
       await setUserData({
         id: response.data.user.id,
         name: response.data.user.name,
       });
-      await setIsAuthenticated(true);
+      setIsAuthenticated(true);
       setTimeout(() => {
         history.push(referer);
       }, 1000);
@@ -43,7 +42,23 @@ function Login(props) {
   };
 
   const onGoogleLoginSuccess = async (googleUser) => {
-    await AuthService.loginGoogleUser(googleUser.getAuthResponse().id_token);
+    try {
+      const response = await AuthService.loginGoogleUser(
+        googleUser.getAuthResponse().id_token
+      );
+      localStorage.setItem("auth-token", response.data.token);
+      setMessage(response.data.message);
+      await setUserData({
+        id: response.data.user.id,
+        name: response.data.user.name,
+      });
+      setIsAuthenticated(true);
+      setTimeout(() => {
+        history.push(referer);
+      }, 1000);
+    } catch (err) {
+      if (err.response) setMessage(err.response.data.error);
+    }
   };
 
   const onGoogleLoginFailure = (res) => {
@@ -78,7 +93,6 @@ function Login(props) {
             buttonText="Accedi con Google"
             onSuccess={onGoogleLoginSuccess}
             onFailure={onGoogleLoginFailure}
-            cookiePolicy={"single_host_origin"}
           />
           <Link to="/register" className="linkForm">
             Non sei registrato?
