@@ -19,14 +19,11 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [showSplashscreen, setShowSplashscreen] = useState(true);
   useEffect(() => {
-    console.log("inizio splash");
     setTimeout(() => {
-      console.log("fine splash");
       setShowSplashscreen(false);
     }, 2000);
 
     const authToken = () => {
-      console.log("inizio check");
       AuthService.checkToken()
         .then((response) => {
           if (response)
@@ -35,7 +32,6 @@ function App() {
               name: response.data.user.name,
             });
           setLoading(false);
-          console.log("fine check");
         })
         .catch((err) => {
           console.log(err);
