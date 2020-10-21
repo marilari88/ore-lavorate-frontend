@@ -3,6 +3,7 @@ import GoogleLogin from "react-google-login";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../../context/UserContext";
 import AuthService from "../../services/AuthService";
+import GoogleLogo from "../../asset/logo_google.svg";
 
 function Login(props) {
   const [email, setEmail] = useState("");
@@ -88,11 +89,18 @@ function Login(props) {
             />
           </div>
           <input type="submit" className="submitForm" value="Accedi" />
+          <div className="oppure">oppure</div>
           <GoogleLogin
             clientId="189102113218-vlo8jfnijik7dkjn4n6jrs0htk5okobf.apps.googleusercontent.com"
-            buttonText="Accedi con Google"
             onSuccess={onGoogleLoginSuccess}
             onFailure={onGoogleLoginFailure}
+            render={(renderProps) => (
+              <button onClick={renderProps.onClick} className="googleButton">
+                <img src={GoogleLogo} alt="Google Logo" />
+                <span>Accedi con Google</span>
+              </button>
+            )}
+            cookiePolicy={"single_host_origin"}
           />
           <Link to="/register" className="linkForm">
             Non sei registrato?
