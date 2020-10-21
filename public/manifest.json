@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "timesheet.app",
+  "name": "App per la rilevazione del tempo lavorato",
   "icons": [
     {
       "src": "favicon.ico",
