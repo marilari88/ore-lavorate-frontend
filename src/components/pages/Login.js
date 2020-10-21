@@ -47,11 +47,14 @@ function Login(props) {
       const response = await AuthService.loginGoogleUser(
         googleUser.getAuthResponse().id_token
       );
+
       localStorage.setItem("auth-token", response.data.token);
       setMessage(response.data.message);
       await setUserData({
         id: response.data.user.id,
         name: response.data.user.name,
+        email: response.data.user.email,
+        picture: response.data.user.picture,
       });
       setIsAuthenticated(true);
       setTimeout(() => {

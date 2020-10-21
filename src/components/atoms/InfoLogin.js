@@ -31,8 +31,8 @@ function InfoLogin({ userData, setUserData }) {
         aria-haspopup="true"
         onClick={handleClick}
       >
-        <div className="nomeOperatore">{userData && userData.name}</div>
-        <Avatar alt="{{userData && user.name}}"></Avatar>
+        <div className="nomeOperatore">{userData.name}</div>
+        <Avatar alt={userData.name} src={userData.picture} />
       </div>
       <Menu
         id="user-menu"
