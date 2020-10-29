@@ -378,12 +378,13 @@ html {
       height: 100%;
 
       h1 {
-        color: $colore-secondario;
+        margin: 1rem;
+        color: white;
       }
 
       .elencoTimbrature {
         width: 100%;
-        padding: 0.5rem;
+        padding: 0 0.5rem;
         box-sizing: border-box;
         max-width: 600px;
         flex: 1 1 auto;
@@ -400,7 +401,7 @@ html {
           color: white;
           display: flex;
           align-items: center;
-          margin-top: 1.5rem;
+          margin-top: 1rem;
           > * {
             margin-left: 10px;
           }
