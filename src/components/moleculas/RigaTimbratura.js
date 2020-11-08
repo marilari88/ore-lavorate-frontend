@@ -4,9 +4,9 @@ import { stringaOrario } from "../../utils/datetime";
 import CallMadeIcon from "@material-ui/icons/CallMade";
 import TimelapseIcon from "@material-ui/icons/Timelapse";
 
-function RigaTimbratura({ timbratura }) {
+function RigaTimbratura({ timbratura, apriTimbratura }) {
   return (
-    <div className="rigaTimbratura">
+    <div className="rigaTimbratura" onClick={() => apriTimbratura()}>
       <div className="ingresso">
         <CallMadeIcon style={{ color: "#a2e88b" }} />{" "}
         {stringaOrario(new Date(timbratura.ingresso))}

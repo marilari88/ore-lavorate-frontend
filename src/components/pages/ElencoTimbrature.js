@@ -2,14 +2,14 @@ import React, { useState, useEffect } from "react";
 import TimbraturaService from "../../services/TimbraturaService";
 import { stringaGiorno } from "../../utils/datetime";
 import RigaTimbratura from "../moleculas/RigaTimbratura";
+import TimbraturaHandle from "../organisms/TimbraturaHandle";
 import TodayIcon from "@material-ui/icons/Today";
-import { useHistory } from "react-router-dom";
+import { SfondoNero } from "../atoms/SfondoNero";
 
 export default function ElencoTimbrature() {
-  const history = useHistory();
-
   let giornoTimbraturaCursor;
   const [elencoTimbrature, setElencoTimbrature] = useState([]);
+  const [timbraturaSelezionata, setTimbraturaSelezionata] = useState(null);
 
   useEffect(() => {
     caricamentoElencoTimbrature();
@@ -33,6 +33,10 @@ export default function ElencoTimbrature() {
     });
   };
 
+  const apriTimbratura = (timbraturaSelezionata) => {
+    setTimbraturaSelezionata(timbraturaSelezionata);
+  };
+
   const isNewDay = (giornoTimbratura) => {
     if (giornoTimbratura !== giornoTimbraturaCursor) {
       giornoTimbraturaCursor = giornoTimbratura;
@@ -43,6 +47,7 @@ export default function ElencoTimbrature() {
 
   return (
     <div className="elencoTimbraturePage">
+      {timbraturaSelezionata && <SfondoNero />}
       <h1>Elenco timbrature</h1>
       <div className="elencoTimbrature">
         {elencoTimbrature &&
@@ -59,14 +64,17 @@ export default function ElencoTimbrature() {
               <RigaTimbratura
                 timbratura={timbratura}
                 cancellaTimbratura={() => cancellaTimbratura(timbratura._id)}
+                apriTimbratura={() => apriTimbratura(timbratura)}
               />
             </React.Fragment>
           ))}
       </div>
-      <div className="rigaPulsanti">
-        <button className="pulsante" onClick={() => history.push("/")}>
-          Indietro
-        </button>
+      <div
+        className={`timbraturaContainer ${timbraturaSelezionata && "selected"}`}
+      >
+        {timbraturaSelezionata && (
+          <TimbraturaHandle timbraturaSelezionata={timbraturaSelezionata} />
+        )}
       </div>
     </div>
   );
