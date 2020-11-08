@@ -37,6 +37,10 @@ export default function ElencoTimbrature() {
     setTimbraturaSelezionata(timbraturaSelezionata);
   };
 
+  const chiudiTimbratura = () => {
+    setTimbraturaSelezionata(null);
+  };
+
   const isNewDay = (giornoTimbratura) => {
     if (giornoTimbratura !== giornoTimbraturaCursor) {
       giornoTimbraturaCursor = giornoTimbratura;
@@ -47,7 +51,9 @@ export default function ElencoTimbrature() {
 
   return (
     <div className="elencoTimbraturePage">
-      {timbraturaSelezionata && <SfondoNero />}
+      {timbraturaSelezionata && (
+        <SfondoNero onClick={() => chiudiTimbratura()} />
+      )}
       <h1>Elenco timbrature</h1>
       <div className="elencoTimbrature">
         {elencoTimbrature &&
