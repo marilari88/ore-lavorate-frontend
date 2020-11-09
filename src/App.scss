@@ -448,7 +448,7 @@ html {
         height: 100px;
         z-index: 3;
         &.selected {
-          height: 50vh;
+          height: 70vh;
           margin-top: -60px;
         }
 
@@ -456,8 +456,67 @@ html {
           display: flex;
           flex-direction: column;
           align-items: center;
+          justify-content: space-between;
           padding: 70px 20px 40px 20px;
           box-sizing: border-box;
+          height: 100%;
+          .giornoTimbratura {
+            color: $colore-secondario;
+          }
+          .rigaHandleTimbratura {
+            color: $colore-secondario;
+            max-width: 270px;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+
+            .orarioIngresso,
+            .orarioUscita {
+              border: 2px solid $colore-secondario;
+              padding: 4px 14px;
+              border-radius: 20px;
+              position: relative;
+              &.giornoSeguente {
+                &:before {
+                  position: absolute;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  content: "+1";
+                  border-radius: 50%;
+                  background-color: $colore-secondario;
+                  color: white;
+                  font-size: 11px;
+                  font-weight: bold;
+                  height: 20px;
+                  width: 20px;
+                  padding-right: 2px;
+                  box-sizing: border-box;
+                  right: -8px;
+                  top: -8px;
+                }
+              }
+            }
+          }
+
+          .tempoLavorato {
+            color: $colore-principale;
+            text-align: center;
+          }
+          .timbraturaManuale {
+            color: $colore-grigio;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+          }
+          .rigaPulsantiTimbratura {
+            .pulsanteCancella {
+              background-color: $colore-errore;
+            }
+          }
         }
       }
     }
