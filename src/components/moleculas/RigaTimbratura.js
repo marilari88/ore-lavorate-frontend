@@ -25,13 +25,6 @@ function RigaTimbratura({ timbratura, apriTimbratura }) {
           </div>
         </>
       )}
-
-      {/*     <button
-          className="cancellaTimbratura"
-          onClick={() => timbratura.cancellaTimbratura()}
-        >
-          Cancella
-        </button> */}
     </div>
   );
 }

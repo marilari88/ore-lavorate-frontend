@@ -30,6 +30,7 @@ export default function ElencoTimbrature() {
       );
       nuovoElencoTimbrature.splice(timbraturaIndex, 1);
       setElencoTimbrature(nuovoElencoTimbrature);
+      setTimbraturaSelezionata(null);
     });
   };
 
@@ -69,7 +70,6 @@ export default function ElencoTimbrature() {
               )}
               <RigaTimbratura
                 timbratura={timbratura}
-                cancellaTimbratura={() => cancellaTimbratura(timbratura._id)}
                 apriTimbratura={() => apriTimbratura(timbratura)}
               />
             </React.Fragment>
@@ -79,7 +79,12 @@ export default function ElencoTimbrature() {
         className={`timbraturaContainer ${timbraturaSelezionata && "selected"}`}
       >
         {timbraturaSelezionata && (
-          <TimbraturaHandle timbraturaSelezionata={timbraturaSelezionata} />
+          <TimbraturaHandle
+            timbraturaSelezionata={timbraturaSelezionata}
+            cancellaTimbraturaSelezionata={() =>
+              cancellaTimbratura(timbraturaSelezionata._id)
+            }
+          />
         )}
       </div>
     </div>

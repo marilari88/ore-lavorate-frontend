@@ -4,7 +4,10 @@ import { stringaTempoBreve } from "../../utils/differenzaorario";
 import CallMadeIcon from "@material-ui/icons/CallMade";
 import PanToolIcon from "@material-ui/icons/PanTool";
 
-export default function TimbraturaHandle({ timbraturaSelezionata }) {
+export default function TimbraturaHandle({
+  timbraturaSelezionata,
+  cancellaTimbraturaSelezionata,
+}) {
   const [giornoSeguente, setGiornoSeguente] = useState(true);
 
   useEffect(() => {
@@ -46,7 +49,12 @@ export default function TimbraturaHandle({ timbraturaSelezionata }) {
         </div>
       </div>
       <div className="rigaPulsantiTimbratura">
-        <button className="pulsante pulsanteCancella">Elimina</button>
+        <button
+          className="pulsante pulsanteCancella"
+          onClick={() => cancellaTimbraturaSelezionata()}
+        >
+          Elimina
+        </button>
       </div>
     </div>
   );
