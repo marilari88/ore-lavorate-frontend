@@ -480,11 +480,11 @@ html {
               position: relative;
               &.giornoSeguente {
                 &:before {
+                  content: "+1g";
                   position: absolute;
                   display: flex;
                   align-items: center;
                   justify-content: center;
-                  content: "+1";
                   border-radius: 50%;
                   background-color: $colore-secondario;
                   color: white;

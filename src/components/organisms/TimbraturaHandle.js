@@ -13,10 +13,11 @@ export default function TimbraturaHandle({
   useEffect(() => {
     const ingressoDate = new Date(timbraturaSelezionata.ingresso);
     const uscitaDate = new Date(timbraturaSelezionata.uscita);
-    const giornoUscita = uscitaDate.getDay();
-    const giornoIngresso = ingressoDate.getDay();
-    setGiornoSeguente(giornoUscita > giornoIngresso);
-    console.log(giornoUscita, giornoIngresso);
+    const stessoGiorno =
+      ingressoDate.getFullYear() === uscitaDate.getFullYear() &&
+      ingressoDate.getMonth() === uscitaDate.getMonth() &&
+      ingressoDate.getDate() === uscitaDate.getDate();
+    setGiornoSeguente(!stessoGiorno);
   }, [timbraturaSelezionata]);
 
   return (
