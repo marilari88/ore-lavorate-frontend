@@ -474,6 +474,7 @@ html {
 
             .orarioIngresso,
             .orarioUscita {
+              cursor: pointer;
               border: 2px solid $colore-secondario;
               padding: 4px 14px;
               border-radius: 20px;
