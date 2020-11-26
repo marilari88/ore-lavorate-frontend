@@ -41,6 +41,7 @@ export default function ElencoTimbrature() {
       if (response.status === 200)
         alert(`Cancellazione della timbratura  avvenuta con successo`);
       let nuovoElencoTimbrature = [...elencoTimbrature];
+      setTimbraturaSelezionata(null);
       const timbraturaIndex = elencoTimbrature.findIndex(
         (timbratura) => timbratura._id === id
       );
