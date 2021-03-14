@@ -474,6 +474,7 @@ html {
 
             .orarioIngresso,
             .orarioUscita {
+              cursor: pointer;
               border: 2px solid $colore-secondario;
               padding: 4px 14px;
               border-radius: 20px;
@@ -505,7 +506,7 @@ html {
             color: $colore-principale;
             text-align: center;
           }
-          .timbraturaManuale {
+          .timbratura-modificata {
             color: $colore-grigio;
             text-align: center;
             display: flex;

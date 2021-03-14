@@ -20,11 +20,28 @@ export default function ElencoTimbrature() {
     setElencoTimbrature(elencoTimbrature.data);
   };
 
+  const aggiornaTimbratura = async (timbraturaAggiornata) => {
+    try {
+      const isTimbraturaUpdated = await TimbraturaService.update(
+        timbraturaSelezionata._id,
+        timbraturaAggiornata
+      );
+      if (isTimbraturaUpdated) {
+        console.log(isTimbraturaUpdated);
+        setTimbraturaSelezionata(null);
+        caricamentoElencoTimbrature();
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const cancellaTimbratura = async (id) => {
     TimbraturaService.delete(id).then((response) => {
       if (response.status === 200)
         alert(`Cancellazione della timbratura  avvenuta con successo`);
       let nuovoElencoTimbrature = [...elencoTimbrature];
+      setTimbraturaSelezionata(null);
       const timbraturaIndex = elencoTimbrature.findIndex(
         (timbratura) => timbratura._id === id
       );
@@ -84,6 +101,7 @@ export default function ElencoTimbrature() {
             cancellaTimbraturaSelezionata={() =>
               cancellaTimbratura(timbraturaSelezionata._id)
             }
+            aggiornaTimbraturaSelezionata={aggiornaTimbratura}
           />
         )}
       </div>
