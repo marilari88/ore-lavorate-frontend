@@ -5,6 +5,7 @@ import { useAuth } from "../../context/UserContext";
 import AuthService from "../../services/AuthService";
 import GoogleLogo from "../../asset/logo_google.svg";
 
+const { REACT_APP_GOOGLE_CLIENT_ID } = process.env;
 function Login(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -41,7 +42,6 @@ function Login(props) {
       if (err.response) setMessage(err.response.data.error);
     }
   };
-
   const onGoogleLoginSuccess = async (googleUser) => {
     try {
       const response = await AuthService.loginGoogleUser(
@@ -94,7 +94,7 @@ function Login(props) {
           <input type="submit" className="submitForm" value="Accedi" />
           <div className="oppure">oppure</div>
           <GoogleLogin
-            clientId="189102113218-vlo8jfnijik7dkjn4n6jrs0htk5okobf.apps.googleusercontent.com"
+            clientId={REACT_APP_GOOGLE_CLIENT_ID}
             onSuccess={onGoogleLoginSuccess}
             onFailure={onGoogleLoginFailure}
             render={(renderProps) => (

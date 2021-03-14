@@ -27,7 +27,6 @@ class AuthService {
     const data = {
       tokenid: tokenId,
     };
-
     return await axios.post(this.URL + "/user/googlelogin", data);
   }
 }
