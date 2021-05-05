@@ -5,6 +5,7 @@ import RigaTimbratura from "../moleculas/RigaTimbratura";
 import TimbraturaHandle from "../organisms/TimbraturaHandle";
 import TodayIcon from "@material-ui/icons/Today";
 import { SfondoNero } from "../atoms/SfondoNero";
+import FloatingButton from "../atoms/FloatingButton";
 
 export default function ElencoTimbrature() {
   let giornoTimbraturaCursor;
@@ -22,12 +23,19 @@ export default function ElencoTimbrature() {
 
   const aggiornaTimbratura = async (timbraturaAggiornata) => {
     try {
-      const isTimbraturaUpdated = await TimbraturaService.update(
-        timbraturaSelezionata._id,
-        timbraturaAggiornata
-      );
-      if (isTimbraturaUpdated) {
-        console.log(isTimbraturaUpdated);
+      let timbraturaSalvata = null;
+      if (timbraturaSelezionata._id) {
+        timbraturaSalvata = await TimbraturaService.update(
+          timbraturaSelezionata._id,
+          timbraturaAggiornata
+        );
+      } else {
+        timbraturaSalvata = await TimbraturaService.create(
+          timbraturaAggiornata
+        );
+      }
+      if (timbraturaSalvata) {
+        console.log(timbraturaSalvata);
         setTimbraturaSelezionata(null);
         caricamentoElencoTimbrature();
       }
@@ -92,6 +100,13 @@ export default function ElencoTimbrature() {
             </React.Fragment>
           ))}
       </div>
+      {!timbraturaSelezionata && (
+        <FloatingButton
+          azioneClick={() => apriTimbratura({})}
+          colore="Primary"
+          etichetta="Timbratura Manuale"
+        />
+      )}
       <div
         className={`timbraturaContainer ${timbraturaSelezionata && "selected"}`}
       >

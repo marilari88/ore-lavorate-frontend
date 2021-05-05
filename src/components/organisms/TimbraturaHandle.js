@@ -98,9 +98,11 @@ export default function TimbraturaHandle({
         />
         {isUscitaManuale && <PanToolIcon className="iconaMano" />}
       </div>
-      <div className="tempoLavorato">
-        Hai lavorato per {stringaTempoBreve(differenzaTimbratura)}
-      </div>
+      {differenzaTimbratura > 0 && (
+        <div className="tempoLavorato">
+          Hai lavorato per {stringaTempoBreve(differenzaTimbratura)}
+        </div>
+      )}
       <div className="timbratura-modificata">
         <div className="testo-timbratura-modificata">
           {isTimbraturaChanged
@@ -109,12 +111,14 @@ export default function TimbraturaHandle({
         </div>
       </div>
       <div className="rigaPulsantiTimbratura">
-        <button
-          className="pulsante pulsanteCancella"
-          onClick={() => cancellaTimbraturaSelezionata()}
-        >
-          Elimina
-        </button>
+        {timbraturaSelezionata._id && (
+          <button
+            className="pulsante pulsanteCancella"
+            onClick={() => cancellaTimbraturaSelezionata()}
+          >
+            Elimina
+          </button>
+        )}
         {isTimbraturaChanged && (
           <button
             className="pulsanteSalva pulsante"

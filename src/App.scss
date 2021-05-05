@@ -514,9 +514,13 @@ html {
             font-size: 0.9rem;
           }
           .rigaPulsantiTimbratura {
+              button{
+                  margin:0rem 0.5rem;
+              }
             .pulsanteCancella {
               background-color: $colore-errore;
             }
+            
           }
         }
       }
