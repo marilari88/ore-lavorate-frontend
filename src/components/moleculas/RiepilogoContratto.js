@@ -5,7 +5,7 @@ import { stringaTempo } from "../../utils/differenzaorario";
 function RiepilogoContratto(props) {
   return (
     <div className="riepilogoContratto">
-      <div className="titoloContratto">Anno 2020</div>
+      <div className="titoloContratto">Anno 2021</div>
       <div className="riepilogoOre">
         <div className="etichettaTotale">Hai lavorato per un totale di:</div>
         <div className="totaleOre">
