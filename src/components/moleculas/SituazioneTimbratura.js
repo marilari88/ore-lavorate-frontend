@@ -87,6 +87,8 @@ function SituazioneTimbratura({ recuperaTotaleContratto }) {
       ingresso: timbratura.ingresso,
       uscita: new Date(),
       differenza: differenzaSecondi,
+      ingressoManuale: timbratura.ingressoManuale,
+      uscitaManuale: timbratura.uscitaManuale,
     };
     await TimbraturaService.update(timbratura._id, timbraturaAggiornata);
     setTimeout(() => {
