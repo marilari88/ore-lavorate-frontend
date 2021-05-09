@@ -1,4 +1,5 @@
 export const stringaGiorno = (timestamp) => {
+  if (!timestamp) return "";
   const fullDate = new Date(timestamp);
   let date = fullDate.getDate();
   let month = fullDate.getMonth() + 1;
@@ -7,6 +8,7 @@ export const stringaGiorno = (timestamp) => {
 };
 
 export const stringaOrario = (timestamp) => {
+  if (!timestamp) return "";
   const fullDate = new Date(timestamp);
   let hours = fullDate.getHours();
   let minutes = fullDate.getMinutes();

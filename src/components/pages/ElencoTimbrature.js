@@ -102,7 +102,14 @@ export default function ElencoTimbrature() {
       </div>
       {!timbraturaSelezionata && (
         <FloatingButton
-          azioneClick={() => apriTimbratura({})}
+          azioneClick={() =>
+            apriTimbratura({
+              ingressoTimbratura: null,
+              ingressoManuale: false,
+              uscitaTimbratura: null,
+              uscitaManuale: false,
+            })
+          }
           colore="Primary"
           etichetta="Timbratura Manuale"
         />

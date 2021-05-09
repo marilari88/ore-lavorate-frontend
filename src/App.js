@@ -5,8 +5,8 @@ import ElencoTimbrature from "./components/pages/ElencoTimbrature";
 import Register from "./components/pages/Register";
 import Login from "./components/pages/Login";
 import Splashscreen from "./components/pages/Splashscreen";
-import Main from "./components/pages/Main";
 
+import Main from "./components/pages/Main";
 import { UserContext } from "./context/UserContext";
 
 import AuthService from "./services/AuthService";

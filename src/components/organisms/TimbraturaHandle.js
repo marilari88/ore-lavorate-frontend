@@ -13,7 +13,7 @@ export default function TimbraturaHandle({
   cancellaTimbraturaSelezionata,
   aggiornaTimbraturaSelezionata,
 }) {
-  const [giornoSeguente, setGiornoSeguente] = useState(true);
+  const [giornoSeguente, setGiornoSeguente] = useState(false);
 
   const [ingressoTimbratura, setIngressoTimbratura] = useState(null);
   const [uscitaTimbratura, setUscitaTimbratura] = useState(null);
@@ -23,15 +23,23 @@ export default function TimbraturaHandle({
   const [isTimbraturaChanged, setIsTimbraturaChanged] = useState(false);
 
   useEffect(() => {
-    setIngressoTimbratura(new Date(timbraturaSelezionata.ingresso));
-    setUscitaTimbratura(new Date(timbraturaSelezionata.uscita));
+    setIngressoTimbratura(
+      timbraturaSelezionata.ingresso
+        ? new Date(timbraturaSelezionata.ingresso)
+        : null
+    );
+    setUscitaTimbratura(
+      timbraturaSelezionata.uscita
+        ? new Date(timbraturaSelezionata.uscita)
+        : null
+    );
     setIsIngressoManuale(timbraturaSelezionata.ingressoManuale || false);
     setIsUscitaManuale(timbraturaSelezionata.uscitaManuale || false);
   }, [timbraturaSelezionata]);
 
   useEffect(() => {
-    console.log(timbraturaSelezionata);
     if (ingressoTimbratura && uscitaTimbratura) {
+      console.log("Uscita impostata alle ore: " + uscitaTimbratura);
       setDifferenzaTimbratura(
         calcoloSecondi(uscitaTimbratura, ingressoTimbratura)
       );
@@ -77,7 +85,9 @@ export default function TimbraturaHandle({
 
   return (
     <div className="timbraturaHandle">
-      <h2 className="giornoTimbratura">{stringaGiorno(ingressoTimbratura)}</h2>
+      <h2 className="giornoTimbratura">
+        {stringaGiorno(ingressoTimbratura ?? new Date())}
+      </h2>
       <div className="rigaHandleTimbratura">
         <CallMadeIcon style={{ color: "#a2e88b" }} /> Sei entrato alle{" "}
         <TimeSelector
@@ -86,18 +96,20 @@ export default function TimbraturaHandle({
         />
         {isIngressoManuale && <PanToolIcon className="iconaMano" />}
       </div>
-      <div className="rigaHandleTimbratura">
-        <CallMadeIcon
-          style={{ color: "#f26d6d", transform: "rotate(90deg)" }}
-        />
-        Sei uscito alle{" "}
-        <TimeSelector
-          tempo={uscitaTimbratura}
-          setTempo={handleUscitaChanged}
-          giornoSeguente={giornoSeguente}
-        />
-        {isUscitaManuale && <PanToolIcon className="iconaMano" />}
-      </div>
+      {ingressoTimbratura && (
+        <div className="rigaHandleTimbratura">
+          <CallMadeIcon
+            style={{ color: "#f26d6d", transform: "rotate(90deg)" }}
+          />
+          Sei uscito alle{" "}
+          <TimeSelector
+            tempo={uscitaTimbratura}
+            setTempo={handleUscitaChanged}
+            giornoSeguente={giornoSeguente}
+          />
+          {isUscitaManuale && <PanToolIcon className="iconaMano" />}
+        </div>
+      )}
       {differenzaTimbratura > 0 && (
         <div className="tempoLavorato">
           Hai lavorato per {stringaTempoBreve(differenzaTimbratura)}

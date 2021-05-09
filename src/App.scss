@@ -476,9 +476,12 @@ html {
             .orarioUscita {
               cursor: pointer;
               border: 2px solid $colore-secondario;
-              padding: 4px 14px;
               border-radius: 20px;
               position: relative;
+              line-height:1.5rem;
+              min-height:1.5rem;
+              text-align:center;
+              min-width:3.5rem;
               &.giornoSeguente {
                 &:before {
                   content: "+1g";
