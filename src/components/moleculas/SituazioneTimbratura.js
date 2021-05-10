@@ -45,10 +45,7 @@ function SituazioneTimbratura({ recuperaTotaleContratto }) {
   const recuperoUltimaTimbratura = () => {
     TimbraturaService.getLast()
       .then((response) => {
-        if (response.data.length === 0) {
-          setTimbratura({});
-          setStatoTimbratura(1);
-        } else if (response.data) {
+        if (response.data) {
           setTimbratura(response.data[0]);
           setStatoTimbratura(response.data[0].uscita ? 1 : 3);
         } else {
