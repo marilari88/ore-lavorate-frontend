@@ -11,6 +11,7 @@ export default function ElencoTimbrature() {
   let giornoTimbraturaCursor;
   const [elencoTimbrature, setElencoTimbrature] = useState([]);
   const [timbraturaSelezionata, setTimbraturaSelezionata] = useState(null);
+  const [lavoroInCorso, setLavoroInCorso] = useState(false);
 
   useEffect(() => {
     caricamentoElencoTimbrature();
@@ -18,6 +19,10 @@ export default function ElencoTimbrature() {
 
   const caricamentoElencoTimbrature = async () => {
     const elencoTimbrature = await TimbraturaService.getAll();
+    const timbraturaSenzaUscita = elencoTimbrature.data.find(
+      (timbratura) => !timbratura.uscita
+    );
+    setLavoroInCorso(timbraturaSenzaUscita ? true : false);
     setElencoTimbrature(elencoTimbrature.data);
   };
 
@@ -35,7 +40,6 @@ export default function ElencoTimbrature() {
         );
       }
       if (timbraturaSalvata) {
-        console.log(timbraturaSalvata);
         setTimbraturaSelezionata(null);
         caricamentoElencoTimbrature();
       }
@@ -100,7 +104,7 @@ export default function ElencoTimbrature() {
             </React.Fragment>
           ))}
       </div>
-      {!timbraturaSelezionata && (
+      {!timbraturaSelezionata && !lavoroInCorso && (
         <FloatingButton
           azioneClick={() =>
             apriTimbratura({
