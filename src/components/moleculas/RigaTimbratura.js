@@ -3,6 +3,7 @@ import { stringaTempoBreve } from "../../utils/differenzaorario";
 import { stringaOrario } from "../../utils/datetime";
 import CallMadeIcon from "@material-ui/icons/CallMade";
 import TimelapseIcon from "@material-ui/icons/Timelapse";
+import WorkOutlineIcon from "@material-ui/icons/WorkOutline";
 
 function RigaTimbratura({ timbratura, apriTimbratura }) {
   return (
@@ -11,7 +12,7 @@ function RigaTimbratura({ timbratura, apriTimbratura }) {
         <CallMadeIcon style={{ color: "#a2e88b" }} />{" "}
         {stringaOrario(new Date(timbratura.ingresso))}
       </div>
-      {timbratura.uscita && (
+      {timbratura.uscita ? (
         <>
           <div className="uscita">
             <CallMadeIcon
@@ -24,6 +25,11 @@ function RigaTimbratura({ timbratura, apriTimbratura }) {
             {stringaTempoBreve(timbratura.differenza)}
           </div>
         </>
+      ) : (
+        <div className="timbraturaInCorso">
+          <WorkOutlineIcon />
+          Lavoro in corso...
+        </div>
       )}
     </div>
   );
