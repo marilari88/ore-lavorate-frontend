@@ -44,7 +44,13 @@ function InfoLogin({ userData, setUserData }) {
         anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
         transformOrigin={{ vertical: "top", horizontal: "right" }}
       >
-        <MenuItem>Il mio Profilo</MenuItem>
+        <MenuItem
+          onClick={() => {
+            history.push("/profile");
+          }}
+        >
+          Il mio Profilo
+        </MenuItem>
         <MenuItem
           onClick={() => {
             logOut();

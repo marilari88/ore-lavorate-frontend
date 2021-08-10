@@ -4,6 +4,7 @@ import { Switch, Route } from "react-router-dom";
 import ElencoTimbrature from "./components/pages/ElencoTimbrature";
 import Register from "./components/pages/Register";
 import Login from "./components/pages/Login";
+import Profile from "./components/pages/Profile";
 import Splashscreen from "./components/pages/Splashscreen";
 
 import Main from "./components/pages/Main";
@@ -48,18 +49,17 @@ function App() {
         {loading || showSplashscreen ? (
           <Splashscreen />
         ) : (
-          <>
-            <Switch>
-              <PrivateRoute exact path="/" component={Main} />
-              <PrivateRoute
-                path="/elencotimbrature"
-                exact
-                component={ElencoTimbrature}
-              />
-              <Route path="/login" component={Login} />
-              <Route path="/register" component={Register} />
-            </Switch>
-          </>
+          <Switch>
+            <PrivateRoute exact path="/" component={Main} />
+            <PrivateRoute exact path="/profile" component={Profile} />
+            <PrivateRoute
+              path="/elencotimbrature"
+              exact
+              component={ElencoTimbrature}
+            />
+            <Route path="/login" component={Login} />
+            <Route path="/register" component={Register} />
+          </Switch>
         )}
       </UserContext.Provider>
     </div>
