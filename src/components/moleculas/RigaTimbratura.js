@@ -13,7 +13,7 @@ function RigaTimbratura({ timbratura, apriTimbratura }) {
         {stringaOrario(new Date(timbratura.ingresso))}
       </div>
       {timbratura.uscita ? (
-        <>
+        <React.Fragment>
           <div className="uscita">
             <CallMadeIcon
               style={{ color: "#f26d6d", transform: "rotate(90deg)" }}
@@ -24,7 +24,7 @@ function RigaTimbratura({ timbratura, apriTimbratura }) {
             <TimelapseIcon />
             {stringaTempoBreve(timbratura.differenza)}
           </div>
-        </>
+        </React.Fragment>
       ) : (
         <div className="timbraturaInCorso">
           <WorkOutlineIcon />

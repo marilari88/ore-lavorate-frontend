@@ -19,9 +19,12 @@ export default function ElencoTimbrature() {
 
   const caricamentoElencoTimbrature = async () => {
     const elencoTimbrature = await TimbraturaService.getAll();
-    const timbraturaSenzaUscita = elencoTimbrature.data.find(
-      (timbratura) => !timbratura.uscita
-    );
+    let timbraturaSenzaUscita;
+    if (elencoTimbrature.data) {
+      timbraturaSenzaUscita = elencoTimbrature.data.find(
+        (timbratura) => !timbratura.uscita
+      );
+    }
     setLavoroInCorso(timbraturaSenzaUscita ? true : false);
     setElencoTimbrature(elencoTimbrature.data);
   };
