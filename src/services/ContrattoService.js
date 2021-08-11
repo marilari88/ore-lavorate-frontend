@@ -1,5 +1,5 @@
-import AuthHeader from "./AuthService";
 import axios from "axios";
+import AuthHeader from "./AuthHeader";
 
 class ContrattoDataService {
   constructor() {
@@ -7,12 +7,7 @@ class ContrattoDataService {
   }
 
   async getAll() {
-    try {
-      const response = await axios.get(this.URL + `/contratti`, AuthHeader());
-      return response.data;
-    } catch (err) {
-      console.error(err);
-    }
+    return await axios.get(this.URL + `/contratti`, AuthHeader());
   }
 
   async get(id) {
@@ -20,11 +15,16 @@ class ContrattoDataService {
   }
 
   async create(data) {
-    return await axios.post(this.URL + `/contratti`, data, AuthHeader());
+    try {
+      return await axios.post(this.URL + `/contratti`, data, AuthHeader());
+    } catch (err) {
+      console.error(err);
+    }
   }
 
   async update(id, data) {
     return await axios.put(this.URL + `/contratti/${id}`, data, AuthHeader());
   }
 }
+
 export default new ContrattoDataService();

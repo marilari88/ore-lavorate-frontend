@@ -2,26 +2,34 @@ import React, { useState, useEffect } from "react";
 import ContrattoButton from "../atoms/ContrattoButton";
 import ContrattoDataService from "../../services/ContrattoService";
 
-function ElencoContratti() {
+function ElencoContratti({ showContratto }) {
   const [elencoContratti, setElencoContratti] = useState([]);
 
   useEffect(() => {
-    setElencoContratti(async () => {
-      let elencoContratti = await ContrattoDataService.getAll();
-      return elencoContratti;
-    });
+    caricaElencoContratti();
   }, []);
+
+  const caricaElencoContratti = async () => {
+    const contrattiCaricati = await ContrattoDataService.getAll();
+    setElencoContratti(contrattiCaricati.data);
+  };
 
   return (
     <div>
       <h1>Elenco Contratti</h1>
+      <div>Hai un totale di {elencoContratti.length} 📗</div>
       <div className="elencoContratti">
-        <ContrattoButton nomeAzienda="" nomeContratto="" />
+        <ContrattoButton
+          nomeAzienda={null}
+          nomeContratto={null}
+          showContratto={showContratto}
+        />
         {elencoContratti &&
-          Array.from(elencoContratti).map((contratto) => (
+          Array.from(elencoContratti).map((contratto, key) => (
             <ContrattoButton
-              nomeAzienda={contratto.nomeazienda}
-              nomeContratto={contratto.nomecontratto}
+              key={key}
+              nomeAzienda={contratto.nomeAzienda}
+              nomeContratto={contratto.nomeContratto}
             />
           ))}
       </div>
