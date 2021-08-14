@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import ContrattoButton from "../atoms/ContrattoButton";
+import ContrattoButton from "../moleculas/ContrattoButton";
 import ContrattoDataService from "../../services/ContrattoService";
 
 function ElencoContratti({ showContratto }) {
@@ -17,7 +17,9 @@ function ElencoContratti({ showContratto }) {
   return (
     <div>
       <h1>Elenco Contratti</h1>
-      <div>Hai un totale di {elencoContratti.length} 📗</div>
+      <div className="riassuntoContratti">
+        Hai un totale di {elencoContratti.length} 📗
+      </div>
       <div className="elencoContratti">
         <ContrattoButton
           nomeAzienda={null}
