@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import ContrattoButton from "../moleculas/ContrattoButton";
 import ContrattoDataService from "../../services/ContrattoService";
 
-function ElencoContratti({ showContratto }) {
+function ElencoContratti({ setContrattoSelezionato, setContrattoEdit }) {
   const [elencoContratti, setElencoContratti] = useState([]);
 
   useEffect(() => {
@@ -22,16 +22,24 @@ function ElencoContratti({ showContratto }) {
       </div>
       <div className="elencoContratti">
         <ContrattoButton
+          id={null}
           nomeAzienda={null}
           nomeContratto={null}
-          showContratto={showContratto}
+          dataInizio={null}
+          dataFine={null}
+          setContrattoSelezionato={setContrattoSelezionato}
+          setContrattoEdit={setContrattoEdit}
         />
         {elencoContratti &&
-          Array.from(elencoContratti).map((contratto, key) => (
+          Array.from(elencoContratti).map((contratto) => (
             <ContrattoButton
-              key={key}
+              key={contratto._id}
+              id={contratto._id}
               nomeAzienda={contratto.nomeAzienda}
               nomeContratto={contratto.nomeContratto}
+              dataInizio={contratto.dataInizio}
+              dataFine={contratto.dataFine}
+              setContrattoSelezionato={setContrattoSelezionato}
             />
           ))}
       </div>

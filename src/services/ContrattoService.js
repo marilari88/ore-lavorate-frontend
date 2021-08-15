@@ -25,6 +25,10 @@ class ContrattoDataService {
   async update(id, data) {
     return await axios.put(this.URL + `/contratti/${id}`, data, AuthHeader());
   }
+
+  async delete(id) {
+    return await axios.delete(this.URL + `/contratti/${id}`, AuthHeader());
+  }
 }
 
 export default new ContrattoDataService();

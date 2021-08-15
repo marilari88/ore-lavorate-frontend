@@ -1,17 +1,37 @@
 import React, { useState } from "react";
 import ContrattoHandler from "../organisms/ContrattoHandler";
+import ContrattoShow from "../organisms/ContrattoShow";
 import ElencoContratti from "../organisms/ElencoContratti";
 
 function Profile() {
-  const [showContratto, setShowContratto] = useState(false);
-  const showContrattoWindow = () => {
-    console.log("Apertura contratto");
-    setShowContratto(true);
-  };
+  const [contrattoSelezionato, setContrattoSelezionato] = useState(null);
+  const [contrattoEdit, setContrattoEdit] = useState(false);
   return (
     <div className="profiloPage">
-      <ElencoContratti showContratto={showContrattoWindow} />
-      {showContratto ? <ContrattoHandler /> : ""}
+      {!contrattoSelezionato && (
+        <ElencoContratti
+          setContrattoSelezionato={setContrattoSelezionato}
+          setContrattoEdit={setContrattoEdit}
+        />
+      )}
+      {contrattoSelezionato && contrattoEdit ? (
+        <ContrattoHandler
+          contrattoSelezionato={contrattoSelezionato}
+          setContrattoSelezionato={setContrattoSelezionato}
+          setContrattoEdit={setContrattoEdit}
+        />
+      ) : (
+        ""
+      )}
+      {contrattoSelezionato && !contrattoEdit ? (
+        <ContrattoShow
+          contrattoSelezionato={contrattoSelezionato}
+          setContrattoSelezionato={setContrattoSelezionato}
+          setContrattoEdit={setContrattoEdit}
+        />
+      ) : (
+        ""
+      )}
     </div>
   );
 }

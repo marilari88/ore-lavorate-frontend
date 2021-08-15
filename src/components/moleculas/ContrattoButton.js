@@ -1,19 +1,31 @@
 import React, { useState, useEffect } from "react";
 
-function ContrattoButton({ nomeContratto, nomeAzienda, showContratto }) {
+function ContrattoButton({
+  id,
+  nomeContratto,
+  nomeAzienda,
+  dataInizio,
+  dataFine,
+  setContrattoSelezionato,
+  setContrattoEdit,
+}) {
   const [statoContratto, setStatoContratto] = useState("");
   useEffect(() => {
-    console.log(nomeContratto);
     if (!nomeContratto) setStatoContratto("nuovo");
   }, [nomeContratto]);
 
-  const handleContrattoClick = (e) => {
-    if (e.currentTarget.classList.contains("nuovo")) {
-      // Apertura nuovo contratto
-      showContratto();
-    } else {
-      // Apertura vecchio contratto
+  const handleContrattoClick = () => {
+    if (!id) {
+      setContrattoEdit(true);
     }
+
+    setContrattoSelezionato({
+      id,
+      nomeContratto,
+      nomeAzienda,
+      dataInizio,
+      dataFine,
+    });
   };
 
   return (
