@@ -58,12 +58,16 @@ html {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-
+                cursor: pointer;
                 svg {
                     width: 20px;
                     justify-self: self-end;
                 }
+                &:hover {
+                    background-color: lighten($colore-secondario, 5%);
+                }
             }
+
             .infoLogin {
                 display: flex;
                 align-items: center;
@@ -71,6 +75,7 @@ html {
                 justify-content: flex-end;
                 border-radius: 20px;
                 padding: 3px 5px;
+                cursor: pointer;
                 .nomeOperatore {
                     max-width: 150px;
                     overflow: hidden;
@@ -80,7 +85,6 @@ html {
                     text-align: right;
                 }
                 &:hover {
-                    cursor: pointer;
                     background-color: lighten($colore-principale, 5%);
                 }
             }
