@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  KeyboardTimePicker,
-  MuiPickersUtilsProvider,
-} from "@material-ui/pickers";
-import DayjsUtils from "@date-io/dayjs";
+import { KeyboardTimePicker } from "@material-ui/pickers";
 import TextInput from "./TextInput";
 
 function TimePicker(props) {
@@ -13,16 +9,14 @@ function TimePicker(props) {
   }, [props.orario]);
   const renderInput = (props) => <TextInput value={props.value} />;
   return (
-    <MuiPickersUtilsProvider utils={DayjsUtils}>
-      <KeyboardTimePicker
-        ampm={false}
-        disableFuture={true}
-        variant="inline"
-        value={orario}
-        TextFieldComponent={renderInput}
-        onChange={setOrario}
-      />
-    </MuiPickersUtilsProvider>
+    <KeyboardTimePicker
+      ampm={false}
+      disableFuture={true}
+      variant="inline"
+      value={orario}
+      TextFieldComponent={renderInput}
+      onChange={setOrario}
+    />
   );
 }
 
