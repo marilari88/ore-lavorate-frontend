@@ -14,8 +14,8 @@ function InfoLogin({ userData, setUserData }) {
     history.push("/login");
   };
 
-  const handleClick = () => {
-    setAnchorEl(document.querySelector(".infoLogin"));
+  const handleClick = (e) => {
+    setAnchorEl(e.currentTarget);
   };
 
   const handleClose = () => {
@@ -47,6 +47,7 @@ function InfoLogin({ userData, setUserData }) {
         <MenuItem
           onClick={() => {
             history.push("/profile");
+            handleClose();
           }}
         >
           Il mio Profilo
@@ -54,6 +55,7 @@ function InfoLogin({ userData, setUserData }) {
         <MenuItem
           onClick={() => {
             logOut();
+            handleClose();
           }}
         >
           Logout
