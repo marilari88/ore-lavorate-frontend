@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ContrattoDataService from "../../services/ContrattoService";
+import DateSelector from "../atoms/DateSelector";
 
 function ContrattoHandler({
   contrattoSelezionato,
@@ -9,16 +10,16 @@ function ContrattoHandler({
   const [idContratto, setIdContratto] = useState("");
   const [nomeContratto, setNomeContratto] = useState("");
   const [nomeAzienda, setNomeAzienda] = useState("");
-  const [dataInizio, setDataInizio] = useState("");
-  const [dataFine, setDataFine] = useState("");
+  const [dataInizio, setDataInizio] = useState(undefined);
+  const [dataFine, setDataFine] = useState(undefined);
 
   useEffect(() => {
     console.log(contrattoSelezionato);
     setIdContratto(contrattoSelezionato.id ?? "");
     setNomeContratto(contrattoSelezionato.nomeContratto ?? "");
     setNomeAzienda(contrattoSelezionato.nomeAzienda ?? "");
-    setDataInizio(contrattoSelezionato.dataInizio ?? "");
-    setDataFine(contrattoSelezionato.dataFine ?? "");
+    setDataInizio(contrattoSelezionato.dataInizio ?? undefined);
+    setDataFine(contrattoSelezionato.dataFine ?? undefined);
   }, [contrattoSelezionato]);
 
   const salvaContratto = async (e) => {
@@ -53,7 +54,7 @@ function ContrattoHandler({
       <h1>Modifica Contratto</h1>
       <form onSubmit={(e) => salvaContratto(e)}>
         <div className="rigaForm">
-          <label htmlFor="name">Nome Contratto</label>
+          <label htmlFor="nomeContratto">Nome Contratto</label>
           <input
             id="nomeContratto"
             type="text"
@@ -62,7 +63,7 @@ function ContrattoHandler({
           />
         </div>
         <div>
-          <label htmlFor="name">Nome Azienda</label>
+          <label htmlFor="nomeAzienda">Nome Azienda</label>
           <input
             id="nomeAzienda"
             value={nomeAzienda}
@@ -71,16 +72,11 @@ function ContrattoHandler({
           />
         </div>
         <div>
-          <label htmlFor="name">Data inizio</label>
-          <input
-            id="dataInizio"
-            type="text"
-            value={dataInizio}
-            onChange={(e) => setDataInizio(e.target.value)}
-          />
+          <label htmlFor="dataInizio">Data inizio</label>
+          <DateSelector tempo={dataInizio} />
         </div>
         <div>
-          <label htmlFor="name">Data fine</label>
+          <label htmlFor="dataFine">Data fine</label>
           <input
             id="dataFine"
             type="text"

@@ -3,12 +3,13 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import * as serviceWorker from "./serviceWorker";
+import itLocale from "date-fns/locale/it";
 import DateFnsUtils from "@date-io/date-fns";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 
 ReactDOM.render(
   <BrowserRouter>
-    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+    <MuiPickersUtilsProvider utils={DateFnsUtils} locale={itLocale}>
       <App />
     </MuiPickersUtilsProvider>
   </BrowserRouter>,
