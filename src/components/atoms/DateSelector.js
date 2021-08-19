@@ -11,19 +11,14 @@ function DateSelector({ tempo, setTempo }) {
 
   return (
     <>
-      <div>
-        <DatePicker
-          open={isOpen}
-          onOpen={() => setIsOpen(true)}
-          onClose={() => setIsOpen(false)}
-          value={date}
-          format="dd/MM/yyyy"
-          onChange={setDate}
-          TextFieldComponent={() => (
-            <input type="text" onClick={() => setIsOpen(true)} value={date} />
-          )}
-        />
-      </div>
+      <DatePicker
+        open={isOpen}
+        onOpen={() => setIsOpen(true)}
+        onClose={() => setIsOpen(false)}
+        value={date}
+        format="dd/MM/yyyy"
+        onChange={setDate}
+      />
     </>
   );
 }

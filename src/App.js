@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
+import { ThemeProvider } from "@material-ui/core";
+import theme from "./theme";
 
 import ElencoTimbrature from "./components/pages/ElencoTimbrature";
 import Register from "./components/pages/Register";
@@ -45,23 +47,25 @@ function App() {
 
   return (
     <div className="App">
-      <UserContext.Provider value={{ userData, setUserData }}>
-        {loading || showSplashscreen ? (
-          <Splashscreen />
-        ) : (
-          <Switch>
-            <PrivateRoute exact path="/" component={Main} />
-            <PrivateRoute exact path="/profile" component={Profile} />
-            <PrivateRoute
-              path="/elencotimbrature"
-              exact
-              component={ElencoTimbrature}
-            />
-            <Route path="/login" component={Login} />
-            <Route path="/register" component={Register} />
-          </Switch>
-        )}
-      </UserContext.Provider>
+      <ThemeProvider theme={theme}>
+        <UserContext.Provider value={{ userData, setUserData }}>
+          {loading || showSplashscreen ? (
+            <Splashscreen />
+          ) : (
+            <Switch>
+              <PrivateRoute exact path="/" component={Main} />
+              <PrivateRoute exact path="/profile" component={Profile} />
+              <PrivateRoute
+                path="/elencotimbrature"
+                exact
+                component={ElencoTimbrature}
+              />
+              <Route path="/login" component={Login} />
+              <Route path="/register" component={Register} />
+            </Switch>
+          )}
+        </UserContext.Provider>
+      </ThemeProvider>
     </div>
   );
 }
