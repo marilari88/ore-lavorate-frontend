@@ -10,581 +10,577 @@ $colore-arancione-trasparente: #ff9b2133;
 $colore-grigio: #c5cfd6;
 
 * {
-    margin: 0px;
-    padding: 0px;
+  margin: 0px;
+  padding: 0px;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .pulsante {
-    font-size: 18px;
-    padding: 15px;
-    border-radius: 40px;
-    color: white;
-    background-color: $colore-secondario;
-    border: none;
-    &:hover {
-        cursor: pointer;
-        background-color: lighten($colore-principale, 5%);
-    }
+  font-size: 18px;
+  padding: 15px;
+  border-radius: 40px;
+  color: white;
+  background-color: $colore-secondario;
+  border: none;
+  &:hover {
+    cursor: pointer;
+    background-color: lighten($colore-principale, 5%);
+  }
 }
 
 html {
-    background-color: $colore-principale;
-    font-size: 18px;
-    font-family: "Fira Sans";
-    .App {
+  background-color: $colore-principale;
+  font-size: 18px;
+  font-family: "Fira Sans";
+  .App {
+    display: flex;
+    flex-flow: column;
+    height: 100vh;
+    .topBar {
+      top: 0px;
+      display: flex;
+      flex-flow: row nowrap;
+      height: 60px;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 10px 15px;
+      box-sizing: content-box;
+
+      .infoContratto {
+        color: white;
+        border-radius: 20px;
+        background-color: $colore-secondario;
+        padding: 8px 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        svg {
+          width: 20px;
+          justify-self: self-end;
+        }
+        &:hover {
+          background-color: lighten($colore-secondario, 5%);
+        }
+      }
+
+      .infoLogin {
+        display: flex;
+        align-items: center;
+        color: white;
+        justify-content: flex-end;
+        border-radius: 20px;
+        padding: 3px 5px;
+        cursor: pointer;
+        .nomeOperatore {
+          max-width: 150px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          padding: 10px;
+          text-align: right;
+        }
+        &:hover {
+          background-color: lighten($colore-principale, 5%);
+        }
+      }
+    }
+
+    .main {
+      position: relative;
+      flex: 1;
+      background: url("./asset/sfondo.svg") no-repeat;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      flex-flow: column;
+      align-items: center;
+      padding-top: 60px;
+      .riepilogoContratto {
+        flex: 1;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-flow: column;
+        .titoloContratto {
+          font-weight: bold;
+          font-size: 36px;
+          color: $colore-secondario;
+        }
+        .riepilogoOre {
+          width: 100%;
+          margin: 24px 0;
+          display: flex;
+          flex-flow: column;
+          align-items: center;
+          .etichettaTotale {
+            font-size: 18px;
+            color: $colore-principale;
+          }
+          .totaleOre {
+            line-height: 40px;
+            font-size: 24px;
+            color: $colore-secondario;
+            font-weight: bold;
+          }
+        }
+        .resocontoOre {
+          font-size: 18px;
+          color: $colore-successo;
+        }
+      }
+
+      .situazioneTimbratura {
+        height: 200px;
         display: flex;
         flex-flow: column;
-        height: 100vh;
-        .topBar {
-            top: 0px;
+        align-items: center;
+        justify-content: space-around;
+        margin: 20px;
+        border-radius: 20px;
+        background-color: $colore-sfondo-riquadro;
+        width: 90%;
+        max-width: 400px;
+        .etichettaSituazione {
+          color: $colore-principale;
+          font-size: 18px;
+        }
+        .tempoLavoroInCorso {
+          font-weight: bold;
+          color: $colore-principale;
+          font-size: 24px;
+          line-height: 40px;
+        }
+      }
+    }
+
+    .splashscreen {
+      height: 100%;
+      width: 100%;
+      background: white;
+      display: flex;
+      flex-direction: column;
+
+      .immagineSplashscreen {
+        flex: 1;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+          width: 75%;
+          height: auto;
+        }
+      }
+
+      .loader {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .footer {
+        width: 100%;
+        height: 80px;
+        .nomeApp {
+          text-align: center;
+          color: $colore-principale;
+          font-size: 30px;
+          font-weight: bold;
+          letter-spacing: 1px;
+          line-height: 30px;
+          margin: 0.24rem 1rem;
+        }
+        .descrizioneApp {
+          text-align: center;
+          color: $colore-grigio;
+          line-height: 30px;
+          margin: 0.25rem 1rem;
+        }
+      }
+    }
+
+    .loginPage,
+    .registerPage {
+      height: 100%;
+      width: 100%;
+      background: white;
+      background-size: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: url("./asset/sfondo_login.svg") white;
+      background-size: 100% 100%;
+      background-position: center center;
+      background-repeat: no-repeat;
+      overflow: hidden;
+
+      .contenitoreLogin,
+      .contenitoreRegister {
+        display: flex;
+        flex-direction: column;
+        margin-top: auto;
+        margin-bottom: auto;
+        align-items: center;
+        h1 {
+          color: $colore-secondario;
+          padding: 2rem 2rem;
+          box-sizing: border-box;
+          text-align: center;
+          height: 40px;
+          align-items: center;
+          display: flex;
+        }
+        form {
+          width: 450px;
+          height: 450px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          box-sizing: border-box;
+          border-radius: 50%;
+          background: $colore-arancione-trasparente;
+
+          .rigaForm {
             display: flex;
-            flex-flow: row nowrap;
-            height: 60px;
+            flex-direction: column;
+            margin: 0 auto;
+            align-items: center;
+            label {
+              color: $colore-secondario;
+              font-size: 16px;
+            }
+            input {
+              transition: box-shadow 0.3s;
+              font-size: 18px;
+              font-weight: 800;
+              color: $colore-secondario;
+              border-radius: 20px;
+              margin-bottom: 0.5rem;
+              margin-top: 0.4rem;
+              padding: 0.5rem;
+              border: none;
+              text-align: center;
+              &:focus {
+                box-shadow: 0 0 1rem $colore-principale;
+                outline: none;
+              }
+            }
+          }
+
+          .submitForm {
+            margin: 0.6rem auto;
+            background-color: $colore-secondario;
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 20px;
+            font-size: 18px;
+            outline: none;
+            &:hover {
+              background-color: lighten($colore-principale, 5%);
+              cursor: pointer;
+            }
+          }
+
+          .oppure {
+            font-size: 0.8rem;
+            margin: 0.5rem;
+            color: $colore-principale;
+          }
+
+          .googleButton {
+            margin: 0.6rem;
+            background-color: white;
+            padding: 0 18px;
+            height: 44px;
+            border: none;
+            border-radius: 20px;
+            outline: none;
+            &:hover {
+              background-color: #f5f5f5;
+              cursor: pointer;
+            }
+            display: flex;
+            align-items: center;
+
+            img {
+              margin-right: 18px;
+              height: 18px;
+              width: 18px;
+            }
+
+            span {
+              font-family: "Roboto", sans-serif;
+              size: 14px;
+              color: #00000071;
+            }
+          }
+
+          .linkForm {
+            width: 100%;
+            box-sizing: border-box;
+            margin: 0.25rem 2rem;
+            text-align: center;
+            color: $colore-secondario;
+            height: 40px;
+            line-height: 40px;
+            &:hover {
+              color: $colore-principale;
+              text-decoration: underline;
+            }
+          }
+        }
+
+        .messaggioForm {
+          padding: 0.5rem 1rem;
+          text-align: center;
+          height: 20px;
+          font-weight: bold;
+          &.successMessage {
+            color: $colore-successo;
+          }
+          &.errorMessage {
+            color: $colore-errore;
+          }
+        }
+      }
+      .footer {
+        padding-bottom: 10px;
+        width: 100%;
+        height: 80px;
+        box-sizing: border-box;
+        .nomeApp {
+          text-align: center;
+          color: $colore-principale;
+          font-size: 30px;
+          font-weight: bold;
+          letter-spacing: 1px;
+          line-height: 30px;
+          margin: 0.24rem 1rem;
+        }
+        .descrizioneApp {
+          text-align: center;
+          color: $colore-grigio;
+          line-height: 30px;
+          margin: 0.25rem 1rem;
+        }
+      }
+    }
+
+    h1 {
+      margin: 1rem;
+      color: white;
+    }
+
+    .elencoTimbraturePage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+      overflow: hidden;
+
+      .elencoTimbrature {
+        width: 100%;
+        padding: 0 0.5rem;
+        box-sizing: border-box;
+        max-width: 600px;
+        flex: 1 1 auto;
+        overflow-y: scroll;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        height: 100px;
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
+
+        .giornoTimbratura {
+          color: white;
+          display: flex;
+          align-items: center;
+          margin-top: 1rem;
+          > * {
+            margin-left: 10px;
+          }
+        }
+
+        .rigaTimbratura {
+          width: 100%;
+          background-color: white;
+          color: $colore-secondario;
+          border-radius: 20px;
+          margin: 0.5rem 0 0.5rem 0;
+          padding-top: 0.5rem;
+          padding-bottom: 0.5rem;
+          padding-left: calc(10% - 25px);
+          padding-right: calc(10% - 25px);
+          display: flex;
+          justify-content: space-between;
+          box-sizing: border-box;
+          cursor: pointer;
+          > * {
+            display: flex;
+            align-items: center;
+            > * {
+              margin: 0 0.25rem;
+            }
+          }
+          .differenza {
+            min-width: 160px;
+          }
+          .timbraturaInCorso {
+            margin: 0 auto;
+          }
+          &:hover {
+            background-color: $colore-sfondo-riquadro;
+          }
+        }
+      }
+
+      .timbraturaContainer {
+        width: 100%;
+        min-height: 100px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: url("./asset/sfondo.svg") no-repeat;
+        background-size: cover;
+        transition: height 0.5s;
+        transition-timing-function: ease-out;
+        height: 100px;
+        z-index: 3;
+        &.selected {
+          height: 70vh;
+          margin-top: -60px;
+        }
+
+        .timbraturaHandle {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: space-between;
+          padding: 70px 20px 40px 20px;
+          box-sizing: border-box;
+          height: 100%;
+          .giornoTimbratura {
+            color: $colore-secondario;
+          }
+          .rigaHandleTimbratura {
+            color: $colore-secondario;
+            max-width: 270px;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
             align-items: center;
             justify-content: space-between;
 
-            padding: 10px 15px;
-            box-sizing: content-box;
-
-            .infoContratto {
-                color: white;
-                border-radius: 20px;
-                background-color: $colore-secondario;
-                padding: 8px 15px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                cursor: pointer;
-                svg {
-                    width: 20px;
-                    justify-self: self-end;
+            .orarioIngresso,
+            .orarioUscita {
+              cursor: pointer;
+              border: 2px solid $colore-secondario;
+              border-radius: 20px;
+              position: relative;
+              line-height: 1.5rem;
+              min-height: 1.5rem;
+              text-align: center;
+              min-width: 3.5rem;
+              &.giornoSeguente {
+                &:before {
+                  content: "+1g";
+                  position: absolute;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  border-radius: 50%;
+                  background-color: $colore-secondario;
+                  color: white;
+                  font-size: 11px;
+                  font-weight: bold;
+                  height: 20px;
+                  width: 20px;
+                  padding-right: 2px;
+                  box-sizing: border-box;
+                  right: -8px;
+                  top: -8px;
                 }
-                &:hover {
-                    background-color: lighten($colore-secondario, 5%);
-                }
+              }
             }
+          }
 
-            .infoLogin {
-                display: flex;
-                align-items: center;
-                color: white;
-                justify-content: flex-end;
-                border-radius: 20px;
-                padding: 3px 5px;
-                cursor: pointer;
-                .nomeOperatore {
-                    max-width: 150px;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                    padding: 10px;
-                    text-align: right;
-                }
-                &:hover {
-                    background-color: lighten($colore-principale, 5%);
-                }
-            }
-        }
-
-        .main {
-            position: relative;
-            flex: 1;
-            background: url("./asset/sfondo.svg") no-repeat;
-            background-size: cover;
+          .tempoLavorato {
+            color: $colore-principale;
+            text-align: center;
+          }
+          .timbratura-modificata {
+            color: $colore-grigio;
+            text-align: center;
             display: flex;
-            justify-content: center;
-            flex-flow: column;
             align-items: center;
-            padding-top: 60px;
-            .riepilogoContratto {
-                flex: 1;
-                width: 100%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-flow: column;
-                .titoloContratto {
-                    font-weight: bold;
-                    font-size: 36px;
-                    color: $colore-secondario;
-                }
-                .riepilogoOre {
-                    width: 100%;
-                    margin: 24px 0;
-                    display: flex;
-                    flex-flow: column;
-                    align-items: center;
-                    .etichettaTotale {
-                        font-size: 18px;
-                        color: $colore-principale;
-                    }
-                    .totaleOre {
-                        line-height: 40px;
-                        font-size: 24px;
-                        color: $colore-secondario;
-                        font-weight: bold;
-                    }
-                }
-                .resocontoOre {
-                    font-size: 18px;
-                    color: $colore-successo;
-                }
+            font-size: 0.9rem;
+          }
+          .rigaPulsantiTimbratura {
+            button {
+              margin: 0rem 0.5rem;
             }
-
-            .situazioneTimbratura {
-                height: 200px;
-                display: flex;
-                flex-flow: column;
-                align-items: center;
-                justify-content: space-around;
-                margin: 20px;
-                border-radius: 20px;
-                background-color: $colore-sfondo-riquadro;
-                width: 90%;
-                max-width: 400px;
-                .etichettaSituazione {
-                    color: $colore-principale;
-                    font-size: 18px;
-                }
-                .tempoLavoroInCorso {
-                    font-weight: bold;
-                    color: $colore-principale;
-                    font-size: 24px;
-                    line-height: 40px;
-                }
+            .pulsanteCancella {
+              background-color: $colore-errore;
             }
+          }
         }
-
-        .splashscreen {
-            height: 100%;
-            width: 100%;
-            background: white;
-            display: flex;
-            flex-direction: column;
-
-            .immagineSplashscreen {
-                flex: 1;
-                margin: auto;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-
-                img {
-                    width: 75%;
-                    height: auto;
-                }
-            }
-
-            .loader {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .footer {
-                width: 100%;
-                height: 80px;
-                .nomeApp {
-                    text-align: center;
-                    color: $colore-principale;
-                    font-size: 30px;
-                    font-weight: bold;
-                    letter-spacing: 1px;
-                    line-height: 30px;
-                    margin: 0.24rem 1rem;
-                }
-                .descrizioneApp {
-                    text-align: center;
-                    color: $colore-grigio;
-                    line-height: 30px;
-                    margin: 0.25rem 1rem;
-                }
-            }
-        }
-
-        .loginPage,
-        .registerPage {
-            height: 100%;
-            width: 100%;
-            background: white;
-            background-size: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background: url("./asset/sfondo_login.svg") white;
-            background-size: 100% 100%;
-            background-position: center center;
-            background-repeat: no-repeat;
-            overflow: hidden;
-
-            .contenitoreLogin,
-            .contenitoreRegister {
-                display: flex;
-                flex-direction: column;
-                margin-top: auto;
-                margin-bottom: auto;
-                align-items: center;
-                h1 {
-                    color: $colore-secondario;
-                    padding: 2rem 2rem;
-                    box-sizing: border-box;
-                    text-align: center;
-                    height: 40px;
-                    align-items: center;
-                    display: flex;
-                }
-                form {
-                    width: 450px;
-                    height: 450px;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                    box-sizing: border-box;
-                    border-radius: 50%;
-                    background: $colore-arancione-trasparente;
-
-                    .rigaForm {
-                        display: flex;
-                        flex-direction: column;
-                        margin: 0 auto;
-                        align-items: center;
-                        label {
-                            color: $colore-secondario;
-                            font-size: 16px;
-                        }
-                        input {
-                            transition: box-shadow 0.3s;
-                            font-size: 18px;
-                            font-weight: 800;
-                            color: $colore-secondario;
-                            border-radius: 20px;
-                            margin-bottom: 0.5rem;
-                            margin-top: 0.4rem;
-                            padding: 0.5rem;
-                            border: none;
-                            text-align: center;
-                            &:focus {
-                                box-shadow: 0 0 1rem $colore-principale;
-                                outline: none;
-                            }
-                        }
-                    }
-
-                    .submitForm {
-                        margin: 0.6rem auto;
-                        background-color: $colore-secondario;
-                        color: white;
-                        padding: 0.75rem 2rem;
-                        border: none;
-                        border-radius: 20px;
-                        font-size: 18px;
-                        outline: none;
-                        &:hover {
-                            background-color: lighten($colore-principale, 5%);
-                            cursor: pointer;
-                        }
-                    }
-
-                    .oppure {
-                        font-size: 0.8rem;
-                        margin: 0.5rem;
-                        color: $colore-principale;
-                    }
-
-                    .googleButton {
-                        margin: 0.6rem;
-                        background-color: white;
-                        padding: 0 18px;
-                        height: 44px;
-                        border: none;
-                        border-radius: 20px;
-                        outline: none;
-                        &:hover {
-                            background-color: #f5f5f5;
-                            cursor: pointer;
-                        }
-                        display: flex;
-                        align-items: center;
-
-                        img {
-                            margin-right: 18px;
-                            height: 18px;
-                            width: 18px;
-                        }
-
-                        span {
-                            font-family: "Roboto", sans-serif;
-                            size: 14px;
-                            color: #00000071;
-                        }
-                    }
-
-                    .linkForm {
-                        width: 100%;
-                        box-sizing: border-box;
-                        margin: 0.25rem 2rem;
-                        text-align: center;
-                        color: $colore-secondario;
-                        height: 40px;
-                        line-height: 40px;
-                        &:hover {
-                            color: $colore-principale;
-                            text-decoration: underline;
-                        }
-                    }
-                }
-
-                .messaggioForm {
-                    padding: 0.5rem 1rem;
-                    text-align: center;
-                    height: 20px;
-                    font-weight: bold;
-                    &.successMessage {
-                        color: $colore-successo;
-                    }
-                    &.errorMessage {
-                        color: $colore-errore;
-                    }
-                }
-            }
-            .footer {
-                padding-bottom: 10px;
-                width: 100%;
-                height: 80px;
-                box-sizing: border-box;
-                .nomeApp {
-                    text-align: center;
-                    color: $colore-principale;
-                    font-size: 30px;
-                    font-weight: bold;
-                    letter-spacing: 1px;
-                    line-height: 30px;
-                    margin: 0.24rem 1rem;
-                }
-                .descrizioneApp {
-                    text-align: center;
-                    color: $colore-grigio;
-                    line-height: 30px;
-                    margin: 0.25rem 1rem;
-                }
-            }
-        }
-
-        h1 {
-            margin: 1rem;
-            color: white;
-        }
-
-        .elencoTimbraturePage {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            height: 100%;
-            overflow: hidden;
-
-            .elencoTimbrature {
-                width: 100%;
-                padding: 0 0.5rem;
-                box-sizing: border-box;
-                max-width: 600px;
-                flex: 1 1 auto;
-                overflow-y: scroll;
-                -ms-overflow-style: none;
-                scrollbar-width: none;
-                height: 100px;
-
-                &::-webkit-scrollbar {
-                    display: none;
-                }
-
-                .giornoTimbratura {
-                    color: white;
-                    display: flex;
-                    align-items: center;
-                    margin-top: 1rem;
-                    > * {
-                        margin-left: 10px;
-                    }
-                }
-
-                .rigaTimbratura {
-                    width: 100%;
-                    background-color: white;
-                    color: $colore-secondario;
-                    border-radius: 20px;
-                    margin: 0.5rem 0 0.5rem 0;
-                    padding-top: 0.5rem;
-                    padding-bottom: 0.5rem;
-                    padding-left:calc(10% - 25px);
-                    padding-right:calc(10% - 25px;
-                    display: flex;
-                    justify-content: space-between;
-                    box-sizing: border-box;
-                    cursor: pointer;
-                    > * {
-                        display: flex;
-                        align-items: center;
-                        > * {
-                            margin: 0 0.25rem;
-                        }
-                    }
-                    .differenza {
-                        min-width: 160px;
-                    }
-                    .timbraturaInCorso{ 
-                        margin:0 auto;
-                    }
-                    &:hover {
-                        background-color: $colore-sfondo-riquadro;
-                    }
-                }
-            }
-
-            .timbraturaContainer {
-                width: 100%;
-                min-height: 100px;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                background: url("./asset/sfondo.svg") no-repeat;
-                background-size: cover;
-                transition: height 0.5s;
-                transition-timing-function: ease-out;
-                height: 100px;
-                z-index: 3;
-                &.selected {
-                    height: 70vh;
-                    margin-top: -60px;
-                }
-
-                .timbraturaHandle {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: space-between;
-                    padding: 70px 20px 40px 20px;
-                    box-sizing: border-box;
-                    height: 100%;
-                    .giornoTimbratura {
-                        color: $colore-secondario;
-                    }
-                    .rigaHandleTimbratura {
-                        color: $colore-secondario;
-                        max-width: 270px;
-                        width: 100%;
-                        display: flex;
-                        flex-direction: row;
-                        align-items: center;
-                        justify-content: space-between;
-
-                        .orarioIngresso,
-                        .orarioUscita {
-                            cursor: pointer;
-                            border: 2px solid $colore-secondario;
-                            border-radius: 20px;
-                            position: relative;
-                            line-height:1.5rem;
-                            min-height:1.5rem;
-                            text-align:center;
-                            min-width:3.5rem;
-                            &.giornoSeguente {
-                                &:before {
-                                    content: "+1g";
-                                    position: absolute;
-                                    display: flex;
-                                    align-items: center;
-                                    justify-content: center;
-                                    border-radius: 50%;
-                                    background-color: $colore-secondario;
-                                    color: white;
-                                    font-size: 11px;
-                                    font-weight: bold;
-                                    height: 20px;
-                                    width: 20px;
-                                    padding-right: 2px;
-                                    box-sizing: border-box;
-                                    right: -8px;
-                                    top: -8px;
-                                }
-                            }
-                        }
-                    }
-
-                    .tempoLavorato {
-                        color: $colore-principale;
-                        text-align: center;
-                    }
-                    .timbratura-modificata {
-                        color: $colore-grigio;
-                        text-align: center;
-                        display: flex;
-                        align-items: center;
-                        font-size: 0.9rem;
-                    }
-                    .rigaPulsantiTimbratura {
-                        button{
-                            margin:0rem 0.5rem;
-                        }
-                        .pulsanteCancella {
-                            background-color: $colore-errore;
-                        }
-
-                    }
-                }
-            }
-        }
-        .profiloPage{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            height: 100%;
-            overflow: hidden;
-
-            .riassuntoContratti{
-                width:100%;
-                text-align:center;
-                margin:1em 0;
-
-            }
-
-            .elencoContratti{
-                width: 100%;
-                max-width:600px;
-                box-sizing: border-box;
-                padding: 1em;
-                overflow-y: scroll;
-                -ms-overflow-style: none;
-                scrollbar-width: none;
-                display: grid;
-                grid-template-columns:1fr 1fr;
-                grid-gap: 1em;
-
-                &::-webkit-scrollbar {
-                    display: none;
-                }
-
-                .contrattoButton.nuovo{
-                    background-color: white;
-                    color: $colore-principale;
-
-                }
-
-                .contrattoButton{
-                    background-color: $colore-secondario;
-                    color: white;
-                    padding:1em;
-                    font-size:1rem;
-                    box-sizing: border-box;
-                    border-radius:20px;
-                    cursor:pointer;
-                }
-
-            }
-        }
+      }
     }
+    .profiloPage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+      overflow: hidden;
+
+      .riassuntoContratti {
+        width: 100%;
+        text-align: center;
+        margin: 1em 0;
+      }
+
+      .elencoContratti {
+        width: 100%;
+        max-width: 600px;
+        box-sizing: border-box;
+        padding: 1em;
+        overflow-y: scroll;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 1em;
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
+
+        .contrattoButton.nuovo {
+          background-color: white;
+          color: $colore-principale;
+        }
+
+        .contrattoButton {
+          background-color: $colore-secondario;
+          color: white;
+          padding: 1em;
+          font-size: 1rem;
+          box-sizing: border-box;
+          border-radius: 20px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
 }
