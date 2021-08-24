@@ -20,13 +20,14 @@ theme.props = {
 theme.overrides = {
   MuiInput: {
     root: {
-      border: `2px solid #69a1ac`,
       borderRadius: `20px`,
-      lineHeight: `1.5rem`,
+      // lineHeight: `1.5rem`,
       maxheight: `1.5rem`,
       textAlign: `center`,
       fontSize: `18px`,
-      padding: `0.4em`,
+      padding: `0.2em`,
+      backgroundColor: `white`,
+      border: `2px solid #69a1ac`,
     },
   },
 };

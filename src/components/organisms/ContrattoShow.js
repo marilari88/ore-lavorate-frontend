@@ -27,9 +27,13 @@ function ContrattoShow({
       </div>
 
       <div className="operazioniContratto">
-        <button onClick={modificaContratto}>Modifica</button>
-        <button onClick={cancellaContratto}>Cancella</button>
-        <button>Imposta Fine</button>
+        <button className="pulsante" onClick={modificaContratto}>
+          Modifica
+        </button>
+        <button className="pulsante" onClick={cancellaContratto}>
+          Cancella
+        </button>
+        <button className="pulsante">Imposta Fine</button>
       </div>
     </div>
   );

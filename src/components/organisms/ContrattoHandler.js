@@ -84,10 +84,10 @@ function ContrattoHandler({
             onChange={(e) => setDataFine(e.target.value)}
           />
         </div>
-        <input type="submit" className="submitForm" value="Conferma" />
+        <input type="submit" className="submitForm pulsante" value="Conferma" />
         <input
           type="reset"
-          className="annullaForm"
+          className="annullaForm pulsante"
           value="Annulla"
           onClick={annullaModifica}
         />
