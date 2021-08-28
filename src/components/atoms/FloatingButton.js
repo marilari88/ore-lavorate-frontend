@@ -10,6 +10,7 @@ const useStyles = makeStyles((theme) => ({
       position: "absolute",
       bottom: theme.spacing(2),
       right: theme.spacing(2),
+      backgroundColor: "white",
     },
   },
   extendedIcon: {
@@ -17,12 +18,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function FloatingButtons({ etichetta, colore, azioneClick }) {
+export default function FloatingButtons({ etichetta, azioneClick }) {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      <Fab variant="extended" onClick={() => azioneClick()} color={colore}>
+      <Fab variant="extended" onClick={() => azioneClick()}>
         <EditIcon className={classes.extendedIcon} />
         {etichetta}
       </Fab>

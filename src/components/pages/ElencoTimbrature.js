@@ -117,7 +117,6 @@ export default function ElencoTimbrature() {
               uscitaManuale: false,
             })
           }
-          colore="Primary"
           etichetta="Timbratura Manuale"
         />
       )}

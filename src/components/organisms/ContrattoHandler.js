@@ -62,7 +62,7 @@ function ContrattoHandler({
             onChange={(e) => setNomeContratto(e.target.value)}
           />
         </div>
-        <div>
+        <div className="rigaForm">
           <label htmlFor="nomeAzienda">Nome Azienda</label>
           <input
             id="nomeAzienda"
@@ -71,11 +71,11 @@ function ContrattoHandler({
             onChange={(e) => setNomeAzienda(e.target.value)}
           />
         </div>
-        <div>
+        <div className="rigaForm">
           <label htmlFor="dataInizio">Data inizio</label>
           <DateSelector tempo={dataInizio} />
         </div>
-        <div>
+        <div className="rigaForm">
           <label htmlFor="dataFine">Data fine</label>
           <input
             id="dataFine"

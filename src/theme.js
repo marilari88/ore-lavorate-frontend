@@ -15,19 +15,44 @@ theme.props = {
   MuiInputLabel: {
     shrink: true,
   },
+  MuiInput: {
+    disableUnderline: true,
+  },
+  MuiButtonBase: {
+    disableRipple: true,
+  },
 };
 
 theme.overrides = {
-  MuiInput: {
+  MuiInputBase: {
     root: {
       borderRadius: `20px`,
-      // lineHeight: `1.5rem`,
       maxheight: `1.5rem`,
-      textAlign: `center`,
       fontSize: `18px`,
       padding: `0.2em`,
       backgroundColor: `white`,
       border: `2px solid #69a1ac`,
+      width: `7em`,
+    },
+  },
+  MuiInput: {
+    input: {
+      textAlign: "center",
+    },
+  },
+  MuiPaper: {
+    rounded: {
+      borderRadius: `20px`,
+    },
+  },
+  MuiPickersToolbarText: {
+    toolbarBtnSelected: {
+      color: `white`,
+    },
+  },
+  MuiPickersDay: {
+    daySelected: {
+      color: `white`,
     },
   },
 };
