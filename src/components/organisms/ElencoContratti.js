@@ -37,8 +37,8 @@ function ElencoContratti({ setContrattoSelezionato, setContrattoEdit }) {
               id={contratto._id}
               nomeAzienda={contratto.nomeAzienda}
               nomeContratto={contratto.nomeContratto}
-              dataInizio={contratto.dataInizio}
-              dataFine={contratto.dataFine}
+              dataInizio={contratto.inizioContratto}
+              dataFine={contratto.fineContratto}
               setContrattoSelezionato={setContrattoSelezionato}
             />
           ))}

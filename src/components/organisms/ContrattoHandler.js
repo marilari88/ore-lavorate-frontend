@@ -12,9 +12,9 @@ function ContrattoHandler({
   const [nomeAzienda, setNomeAzienda] = useState("");
   const [dataInizio, setDataInizio] = useState(undefined);
   const [dataFine, setDataFine] = useState(undefined);
+  const [messageError, setMessageError] = useState("");
 
   useEffect(() => {
-    console.log(contrattoSelezionato);
     setIdContratto(contrattoSelezionato.id ?? "");
     setNomeContratto(contrattoSelezionato.nomeContratto ?? "");
     setNomeAzienda(contrattoSelezionato.nomeAzienda ?? "");
@@ -32,16 +32,25 @@ function ContrattoHandler({
     };
     try {
       if (idContratto) {
-        await ContrattoDataService.update(idContratto, datiContratto);
+        var response = await ContrattoDataService.update(
+          idContratto,
+          datiContratto
+        );
       } else {
-        let response = await ContrattoDataService.create(datiContratto);
-        console.info(response);
+        response = await ContrattoDataService.create(datiContratto);
       }
+      setContrattoEdit(false);
+      setContrattoSelezionato({
+        id: response.data._id,
+        nomeContratto: response.data.nomeContratto,
+        nomeAzienda: response.data.nomeAzienda,
+        dataInizio: response.data.inizioContratto,
+        dataFine: response.data.fineContratto,
+      });
     } catch (err) {
-      console.err(err);
+      setMessageError(err.response.data.error.message);
+      console.error(err.response.data.error.message);
     }
-    setContrattoEdit(false);
-    setContrattoSelezionato(null);
   };
 
   const annullaModifica = () => {
@@ -73,7 +82,7 @@ function ContrattoHandler({
         </div>
         <div className="rigaForm">
           <label htmlFor="dataInizio">Data inizio</label>
-          <DateSelector tempo={dataInizio} />
+          <DateSelector tempo={dataInizio} setTempo={setDataInizio} />
         </div>
         <div className="rigaForm">
           <label htmlFor="dataFine">Data fine</label>
@@ -92,6 +101,7 @@ function ContrattoHandler({
           onClick={annullaModifica}
         />
       </form>
+      <div className="messageError">{messageError}</div>
     </div>
   );
 }

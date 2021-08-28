@@ -15,11 +15,7 @@ class ContrattoDataService {
   }
 
   async create(data) {
-    try {
-      return await axios.post(this.URL + `/contratti`, data, AuthHeader());
-    } catch (err) {
-      console.error(err);
-    }
+    return await axios.post(this.URL + `/contratti`, data, AuthHeader());
   }
 
   async update(id, data) {

@@ -1,13 +1,9 @@
 import { DatePicker } from "@material-ui/pickers";
-import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
+import React, { useState } from "react";
 
 function DateSelector({ tempo, setTempo }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [date, setDate] = useState(null);
-
-  useEffect(() => {
-    setDate(tempo);
-  }, [tempo]);
 
   return (
     <>
@@ -15,12 +11,17 @@ function DateSelector({ tempo, setTempo }) {
         open={isOpen}
         onOpen={() => setIsOpen(true)}
         onClose={() => setIsOpen(false)}
-        value={date}
+        value={tempo}
         format="dd/MM/yyyy"
-        onChange={setDate}
+        onChange={setTempo}
       />
     </>
   );
 }
 
 export default DateSelector;
+
+DateSelector.propTypes = {
+  tempo: PropTypes.instanceOf(Date),
+  setTempo: PropTypes.func.isRequired,
+};

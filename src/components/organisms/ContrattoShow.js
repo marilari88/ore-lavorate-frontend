@@ -22,8 +22,17 @@ function ContrattoShow({
       <div className="datiContratto">
         <div>Nome Contratto: {contrattoSelezionato.nomeContratto}</div>
         <div>Nome Azienda: {contrattoSelezionato.nomeAzienda}</div>
-        <div>Data Inizio: {contrattoSelezionato.dataInizio}</div>
-        <div>Data Fine: {contrattoSelezionato.dataFine}</div>
+        <div>
+          Data Inizio:{" "}
+          {new Date(contrattoSelezionato.dataInizio).toLocaleDateString(
+            "it-IT"
+          )}
+        </div>
+        <div>
+          Data Fine:{" "}
+          {contrattoSelezionato.dataFine &&
+            new Date(contrattoSelezionato.dataFine).toLocaleDateString("it-IT")}
+        </div>
       </div>
 
       <div className="operazioniContratto">
