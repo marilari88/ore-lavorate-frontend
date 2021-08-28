@@ -1,6 +1,6 @@
 import styled, { keyframes } from "styled-components";
 
-const breatheAnimation = keyframes`
+const animation = keyframes`
  0% { opacity:0 }
  100% { opacity: 1 }
 `;
@@ -15,6 +15,6 @@ export const SfondoNero = styled.div`
     rgba(255, 255, 255, 0) 0%,
     rgba(15, 60, 120, 1) 100%
   );
-  animation-name: ${breatheAnimation};
+  animation-name: ${animation};
   animation-duration: 1s;
 `;
