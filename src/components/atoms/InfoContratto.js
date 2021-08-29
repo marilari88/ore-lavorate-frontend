@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import { Menu, MenuItem } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
+import PropTypes from "prop-types";
 
-function InfoContratto() {
+function InfoContratto({ nomeContratto }) {
   const history = useHistory();
 
   const [anchorEl, setAnchorEl] = useState("");
@@ -25,7 +26,7 @@ function InfoContratto() {
         aria-owns={anchorEl ? "contratto-menu" : undefined}
         onClick={handleClick}
       >
-        Fatebenefratelli
+        {nomeContratto ?? "Nessun Contratto"}
         <ArrowDropDownIcon />
       </div>
       <Menu
@@ -67,3 +68,7 @@ function InfoContratto() {
 }
 
 export default InfoContratto;
+
+InfoContratto.propTypes = {
+  nomeContratto: PropTypes.string,
+};

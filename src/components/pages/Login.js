@@ -33,6 +33,8 @@ function Login(props) {
       await setUserData({
         id: response.data.user.id,
         name: response.data.user.name,
+        email: response.data.user.email,
+        contrattoSelezionato: response.data.user.contrattoSelezionato,
       });
       setIsAuthenticated(true);
       setTimeout(() => {
@@ -55,6 +57,7 @@ function Login(props) {
         name: response.data.user.name,
         email: response.data.user.email,
         picture: response.data.user.picture,
+        contrattoSelezionato: response.data.user.contrattoSelezionato,
       });
       setIsAuthenticated(true);
       setTimeout(() => {

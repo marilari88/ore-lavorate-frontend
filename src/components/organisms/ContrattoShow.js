@@ -1,5 +1,6 @@
 import React from "react";
 import ContrattoDataService from "../../services/ContrattoService";
+import UserDataService from "../../services/UserService";
 
 function ContrattoShow({
   contrattoSelezionato,
@@ -11,9 +12,17 @@ function ContrattoShow({
   };
 
   const cancellaContratto = async () => {
-    let response = await ContrattoDataService.delete(contrattoSelezionato.id);
-    alert(response);
+    const response = await ContrattoDataService.delete(contrattoSelezionato.id);
+    console.log(response);
+    alert("Contratto rimosso");
     setContrattoSelezionato(null);
+  };
+
+  const setUtenteContrattoSelezionato = async () => {
+    const response = await UserDataService.updateContrattoSelezionato(
+      contrattoSelezionato.id
+    );
+    console.log(response.data);
   };
 
   return (
@@ -42,7 +51,9 @@ function ContrattoShow({
         <button className="pulsante" onClick={cancellaContratto}>
           Cancella
         </button>
-        <button className="pulsante">Imposta Fine</button>
+        <button className="pulsante" onClick={setUtenteContrattoSelezionato}>
+          Seleziona Contratto
+        </button>
       </div>
     </div>
   );
