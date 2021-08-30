@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import InfoLogin from "../atoms/InfoLogin";
 import InfoContratto from "../atoms/InfoContratto";
 import { useAuth } from "../../context/UserContext";
