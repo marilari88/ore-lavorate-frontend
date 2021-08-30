@@ -1,12 +1,17 @@
 import React from "react";
 import ContrattoDataService from "../../services/ContrattoService";
 import UserDataService from "../../services/UserService";
+import { useAuth } from "../../context/UserContext";
+import { useHistory } from "react-router-dom";
 
 function ContrattoShow({
   contrattoSelezionato,
   setContrattoSelezionato,
   setContrattoEdit,
 }) {
+  const history = useHistory();
+  const { userData, setUserData } = useAuth();
+
   const modificaContratto = () => {
     setContrattoEdit(true);
   };
@@ -18,11 +23,25 @@ function ContrattoShow({
     setContrattoSelezionato(null);
   };
 
-  const setUtenteContrattoSelezionato = async () => {
+  // TODO Gestire il salvataggio, aggiornamento context e nuovo token i AuthService
+  const saveContrattoSelezionato = async () => {
     const response = await UserDataService.updateContrattoSelezionato(
       contrattoSelezionato.id
     );
-    console.log(response.data);
+    localStorage.setItem("auth-token", response.data.token);
+
+    await setUserData({
+      ...userData,
+      contrattoSelezionato: {
+        id: contrattoSelezionato.id,
+        nomeAzienda: contrattoSelezionato.nomeAzienda,
+        nomeContratto: contrattoSelezionato.nomeContratto,
+        dataInizio: contrattoSelezionato.dataInizio,
+        dataFine: contrattoSelezionato.dataFine,
+      },
+    });
+    setContrattoSelezionato(null);
+    history.push("/");
   };
 
   return (
@@ -51,7 +70,7 @@ function ContrattoShow({
         <button className="pulsante" onClick={cancellaContratto}>
           Cancella
         </button>
-        <button className="pulsante" onClick={setUtenteContrattoSelezionato}>
+        <button className="pulsante" onClick={saveContrattoSelezionato}>
           Seleziona Contratto
         </button>
       </div>

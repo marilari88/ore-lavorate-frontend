@@ -3,6 +3,7 @@ import GoogleLogin from "react-google-login";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../../context/UserContext";
 import AuthService from "../../services/AuthService";
+import ContrattoService from "../../services/ContrattoService";
 import GoogleLogo from "../../asset/logo_google.svg";
 
 const { REACT_APP_GOOGLE_CLIENT_ID } = process.env;
@@ -21,6 +22,21 @@ function Login(props) {
       setReferer(props.location.state.referer);
   }, [props]);
 
+  const saveUserInContext = async (user) => {
+    let contrattoUtente = undefined;
+    if (user.contrattoSelezionato) {
+      const response = await ContrattoService.get(user.contrattoSelezionato);
+      contrattoUtente = response.data;
+    }
+    await setUserData({
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      picture: user.picture,
+      contrattoSelezionato: contrattoUtente,
+    });
+  };
+
   const submit = async (e) => {
     e.preventDefault();
     try {
@@ -30,12 +46,7 @@ function Login(props) {
       });
       localStorage.setItem("auth-token", response.data.token);
       setMessage(response.data.message);
-      await setUserData({
-        id: response.data.user.id,
-        name: response.data.user.name,
-        email: response.data.user.email,
-        contrattoSelezionato: response.data.user.contrattoSelezionato,
-      });
+      saveUserInContext(response.data.user);
       setIsAuthenticated(true);
       setTimeout(() => {
         history.push(referer);
@@ -52,13 +63,7 @@ function Login(props) {
 
       localStorage.setItem("auth-token", response.data.token);
       setMessage(response.data.message);
-      await setUserData({
-        id: response.data.user.id,
-        name: response.data.user.name,
-        email: response.data.user.email,
-        picture: response.data.user.picture,
-        contrattoSelezionato: response.data.user.contrattoSelezionato,
-      });
+      saveUserInContext(response.data.user);
       setIsAuthenticated(true);
       setTimeout(() => {
         history.push(referer);

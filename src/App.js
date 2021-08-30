@@ -13,6 +13,7 @@ import Main from "./components/pages/Main";
 import { UserContext } from "./context/UserContext";
 
 import AuthService from "./services/AuthService";
+import ContrattoService from "./services/ContrattoService";
 
 import "./App.scss";
 import PrivateRoute from "./PrivateRoute";
@@ -28,15 +29,23 @@ function App() {
 
     const authToken = () => {
       AuthService.checkToken()
-        .then((response) => {
-          if (response)
+        .then(async (response) => {
+          if (response) {
+            const contrattoUtente = response.data.user.contrattoSelezionato
+              ? await ContrattoService.get(
+                  response.data.user.contrattoSelezionato
+                )
+              : undefined;
+
             setUserData({
               id: response.data.user.id,
               name: response.data.user.name,
               email: response.data.user.email,
               picture: response.data.user.picture,
+              contrattoSelezionato: contrattoUtente?.data,
             });
-          setLoading(false);
+            setLoading(false);
+          }
         })
         .catch((err) => {
           console.log(err);

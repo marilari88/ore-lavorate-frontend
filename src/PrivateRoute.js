@@ -1,7 +1,9 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
-import Header from "./components/organisms/Header";
+
 import { useAuth } from "./context/UserContext";
+import Header from "./components/organisms/Header";
+import ProfilePage from "./components/pages/Profile";
 
 function PrivateRoute({ component: Component, ...rest }) {
   const { userData } = useAuth();
@@ -13,7 +15,11 @@ function PrivateRoute({ component: Component, ...rest }) {
         userData ? (
           <>
             <Header />
-            <Component {...props} />
+            {userData.contrattoSelezionato ? (
+              <Component {...props} />
+            ) : (
+              <ProfilePage />
+            )}
           </>
         ) : (
           <Redirect

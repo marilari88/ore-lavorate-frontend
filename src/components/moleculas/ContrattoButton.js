@@ -35,7 +35,6 @@ function ContrattoButton({
     >
       <div className="nomeContratto">{nomeContratto ?? "Nuovo Contratto"}</div>
       <div className="nomeAzienda">{nomeAzienda ?? "➕"}</div>
-      <div className="statoContratto">statoContratto</div>
     </div>
   );
 }

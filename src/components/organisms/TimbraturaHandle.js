@@ -49,17 +49,6 @@ export default function TimbraturaHandle({
         ingressoTimbratura.getDate() === uscitaTimbratura.getDate();
       setGiornoSeguente(!stessoGiorno);
     }
-    // const ingressoTimbraturaSelezionata = new Date(
-    //   timbraturaSelezionata.ingresso
-    // );
-    // const uscitaTimbraturaSelezionata = new Date(timbraturaSelezionata.uscita);
-    // if (ingressoTimbratura) {
-    //   setIsTimbraturaChanged(
-    //     ingressoTimbratura.getTime() !==
-    //       ingressoTimbraturaSelezionata.getTime() ||
-    //       uscitaTimbratura.getTime() !== uscitaTimbraturaSelezionata.getTime()
-    //   );
-    // }
   }, [ingressoTimbratura, uscitaTimbratura, timbraturaSelezionata]);
 
   const salvaTimbratura = () => {
