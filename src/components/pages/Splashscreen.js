@@ -3,7 +3,7 @@ import Loader from "react-loader-spinner";
 
 import SplashscreenImage from "../../asset/splashscreen.svg";
 
-export default function Splashscreen() {
+export default function Splashscreen(props) {
   return (
     <div className="splashscreen">
       <div className="immagineSplashscreen">
@@ -17,6 +17,7 @@ export default function Splashscreen() {
         className="loader"
       />
       <div className="footer">
+        <div className="messaggioApp">{props.message}</div>
         <div className="nomeApp">timesheet.app</div>
         <div className="descrizioneApp">Rilevazione tempo di lavoro</div>
       </div>

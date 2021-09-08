@@ -22,10 +22,12 @@ function App() {
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [showSplashscreen, setShowSplashscreen] = useState(true);
+  const [message, setMessage] = useState("Accesso in corso");
+
   useEffect(() => {
     setTimeout(() => {
       setShowSplashscreen(false);
-    }, 2000);
+    }, 1000);
 
     const authToken = () => {
       AuthService.checkToken()
@@ -44,10 +46,11 @@ function App() {
               picture: response.data.user.picture,
               contrattoSelezionato: contrattoUtente?.data,
             });
-            setLoading(false);
           }
+          setLoading(false);
         })
         .catch((err) => {
+          setMessage(err.response.data);
           console.log(err);
         });
     };
@@ -59,7 +62,7 @@ function App() {
       <ThemeProvider theme={theme}>
         <UserContext.Provider value={{ userData, setUserData }}>
           {loading || showSplashscreen ? (
-            <Splashscreen />
+            <Splashscreen message={message} />
           ) : (
             <Switch>
               <PrivateRoute exact path="/" component={Main} />

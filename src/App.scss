@@ -187,7 +187,13 @@ html {
 
       .footer {
         width: 100%;
-        height: 80px;
+        height: 110px;
+        .messaggioApp {
+          text-align: center;
+          color: $colore-principale;
+          line-height: 30px;
+          margin: 0.25rem 1rem;
+        }
         .nomeApp {
           text-align: center;
           color: $colore-principale;
