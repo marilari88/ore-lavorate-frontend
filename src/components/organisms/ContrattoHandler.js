@@ -18,7 +18,7 @@ function ContrattoHandler({
     setIdContratto(contrattoSelezionato.id ?? "");
     setNomeContratto(contrattoSelezionato.nomeContratto ?? "");
     setNomeAzienda(contrattoSelezionato.nomeAzienda ?? "");
-    setDataInizio(contrattoSelezionato.dataInizio ?? undefined);
+    setDataInizio(contrattoSelezionato.dataInizio ?? new Date());
     setDataFine(contrattoSelezionato.dataFine ?? undefined);
   }, [contrattoSelezionato]);
 
@@ -30,9 +30,10 @@ function ContrattoHandler({
       inizioContratto: dataInizio,
       fineContratto: dataFine && null,
     };
+    let response;
     try {
       if (idContratto) {
-        var response = await ContrattoDataService.update(
+        response = await ContrattoDataService.update(
           idContratto,
           datiContratto
         );
@@ -48,8 +49,7 @@ function ContrattoHandler({
         dataFine: response.data.fineContratto,
       });
     } catch (err) {
-      setMessageError(err.response.data.error.message);
-      console.error(err.response.data.error.message);
+      setMessageError(err.response.data.error);
     }
   };
 
@@ -93,6 +93,7 @@ function ContrattoHandler({
             onChange={(e) => setDataFine(e.target.value)}
           />
         </div>
+        <div className="messageError">{messageError}</div>
         <input type="submit" className="submitForm pulsante" value="Conferma" />
         <input
           type="reset"
@@ -101,7 +102,6 @@ function ContrattoHandler({
           onClick={annullaModifica}
         />
       </form>
-      <div className="messageError">{messageError}</div>
     </div>
   );
 }
