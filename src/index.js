@@ -7,6 +7,11 @@ import itLocale from "date-fns/locale/it";
 import DateFnsUtils from "@date-io/date-fns";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 
+if (process.env.NODE_ENV === "development") {
+  const { worker } = require("./mocks/browser");
+  worker.start();
+}
+
 ReactDOM.render(
   <BrowserRouter>
     <MuiPickersUtilsProvider utils={DateFnsUtils} locale={itLocale}>
