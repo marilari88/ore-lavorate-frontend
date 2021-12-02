@@ -25,6 +25,9 @@
     "prop-types": "^15.7.2",
     "react-scripts": "^4.0.3"
   },
+  "optionalDependencies": {
+      "fsevents": "^2.1.2"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
