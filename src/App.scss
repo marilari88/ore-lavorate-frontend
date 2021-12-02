@@ -1,13 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Fira+Sans");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
 
-$colore-principale: #89c5cc;
-$colore-secondario: #69a1ac;
-$colore-successo: #a2e88b;
-$colore-errore: #f26d6d;
-$colore-sfondo-riquadro: #f4f2f2;
-$colore-arancione-trasparente: #ff9b2133;
-$colore-grigio: #c5cfd6;
+@import "asset/master";
 
 * {
   margin: 0px;
@@ -540,51 +534,6 @@ html {
               background-color: $colore-errore;
             }
           }
-        }
-      }
-    }
-    .profiloPage {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      height: 100%;
-      overflow: hidden;
-
-      .riassuntoContratti {
-        width: 100%;
-        text-align: center;
-        margin: 1em 0;
-      }
-
-      .elencoContratti {
-        width: 100%;
-        max-width: 600px;
-        box-sizing: border-box;
-        padding: 1em;
-        overflow-y: scroll;
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-gap: 1em;
-
-        &::-webkit-scrollbar {
-          display: none;
-        }
-
-        .contrattoButton.nuovo {
-          background-color: white;
-          color: $colore-principale;
-        }
-
-        .contrattoButton {
-          background-color: $colore-secondario;
-          color: white;
-          padding: 1em;
-          font-size: 1rem;
-          box-sizing: border-box;
-          border-radius: 20px;
-          cursor: pointer;
         }
       }
     }
