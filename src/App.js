@@ -6,7 +6,7 @@ import theme from "./theme";
 import ElencoTimbrature from "./components/pages/ElencoTimbrature";
 import Register from "./components/pages/Register";
 import Login from "./components/pages/Login";
-import Profile from "./components/pages/Profile";
+import ProfilePage from "./components/pages/ProfilePage/ProfilePage";
 import Splashscreen from "./components/pages/Splashscreen";
 
 import Main from "./components/pages/Main";
@@ -50,8 +50,7 @@ function App() {
           setLoading(false);
         })
         .catch((err) => {
-          setMessage(err.response.data);
-          console.log(err);
+          setMessage(err.message);
         });
     };
     authToken();
@@ -66,7 +65,7 @@ function App() {
           ) : (
             <Switch>
               <PrivateRoute exact path="/" component={Main} />
-              <PrivateRoute exact path="/profile" component={Profile} />
+              <PrivateRoute exact path="/profile" component={ProfilePage} />
               <PrivateRoute
                 path="/elencotimbrature"
                 exact

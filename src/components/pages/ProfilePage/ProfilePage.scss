@@ -1,0 +1,47 @@
+@import "../../../asset/master";
+
+.profilePage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  overflow: hidden;
+
+  .riassuntoContratti {
+    width: 100%;
+    text-align: center;
+    margin: 1em 0;
+  }
+
+  .elencoContratti {
+    width: 100%;
+    max-width: 600px;
+    box-sizing: border-box;
+    padding: 1em;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1em;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .contrattoButton.nuovo {
+      background-color: white;
+      color: $colore-principale;
+    }
+
+    .contrattoButton {
+      background-color: $colore-secondario;
+      color: white;
+      padding: 1em;
+      font-size: 1rem;
+      box-sizing: border-box;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+  }
+}

@@ -3,7 +3,7 @@ import { Route, Redirect } from "react-router-dom";
 
 import { useAuth } from "./context/UserContext";
 import Header from "./components/organisms/Header";
-import ProfilePage from "./components/pages/Profile";
+import ProfilePage from "./components/pages/ProfilePage/ProfilePage";
 
 function PrivateRoute({ component: Component, ...rest }) {
   const { userData } = useAuth();

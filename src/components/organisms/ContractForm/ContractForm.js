@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import ContrattoDataService from "../../services/ContrattoService";
 import DateSelector from "../atoms/DateSelector";
 
-function ContrattoHandler({
+function ContrattoForm({
   contrattoSelezionato,
   setContrattoSelezionato,
   setContrattoEdit,
@@ -59,7 +59,7 @@ function ContrattoHandler({
   };
 
   return (
-    <div className="contrattoHandler">
+    <>
       <h1>Modifica Contratto</h1>
       <form onSubmit={(e) => salvaContratto(e)}>
         <div className="rigaForm">
@@ -102,8 +102,8 @@ function ContrattoHandler({
           onClick={annullaModifica}
         />
       </form>
-    </div>
+    </>
   );
 }
 
-export default ContrattoHandler;
+export default ContrattoForm;
