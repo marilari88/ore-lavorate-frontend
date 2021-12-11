@@ -5,7 +5,7 @@ import theme from "./theme";
 
 import ElencoTimbrature from "./components/pages/ElencoTimbrature";
 import Register from "./components/pages/Register";
-import Login from "./components/pages/Login";
+import Login from "components/pages/LoginPage/Login";
 import ProfilePage from "./components/pages/ProfilePage/ProfilePage";
 import Splashscreen from "./components/pages/Splashscreen";
 

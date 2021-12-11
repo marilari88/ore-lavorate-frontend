@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import GoogleLogin from "react-google-login";
 import { Link, useHistory } from "react-router-dom";
-import { useAuth } from "../../context/UserContext";
-import AuthService from "../../services/AuthService";
-import ContrattoService from "../../services/ContrattoService";
-import GoogleLogo from "../../asset/logo_google.svg";
+import { useAuth } from "context/UserContext";
+import AuthService from "services/AuthService";
+import ContrattoService from "services/ContrattoService";
+import GoogleLogo from "asset/logo_google.svg";
 
 const { REACT_APP_GOOGLE_CLIENT_ID } = process.env;
 function Login(props) {
