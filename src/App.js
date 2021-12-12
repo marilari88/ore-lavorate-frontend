@@ -8,6 +8,7 @@ import Register from "./components/pages/Register";
 import Login from "components/pages/LoginPage/Login";
 import ProfilePage from "./components/pages/ProfilePage/ProfilePage";
 import Splashscreen from "./components/pages/Splashscreen";
+import ContractPage from "components/pages/ContractPage/ContractPage";
 
 import Main from "./components/pages/Main";
 import { UserContext } from "./context/UserContext";
@@ -66,6 +67,7 @@ function App() {
             <Switch>
               <PrivateRoute exact path="/" component={Main} />
               <PrivateRoute exact path="/profile" component={ProfilePage} />
+              <PrivateRoute exact path="/contract" component={ContractPage} />
               <PrivateRoute
                 path="/elencotimbrature"
                 exact

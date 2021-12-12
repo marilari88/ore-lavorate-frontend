@@ -1,5 +1,5 @@
 import React from "react";
-import ContrattoDataService from "../../services/ContrattoService";
+import ContrattoDataService from "services/ContrattoService";
 import UserDataService from "../../services/UserService";
 import { useAuth } from "../../context/UserContext";
 import { useHistory } from "react-router-dom";

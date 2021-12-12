@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import ContrattoDataService from "../../services/ContrattoService";
-import DateSelector from "../atoms/DateSelector";
+import ContrattoDataService from "services/ContrattoService";
+import DateSelector from "components/atoms/DateSelector/DateSelector";
 
 function ContrattoForm({
   contrattoSelezionato,
